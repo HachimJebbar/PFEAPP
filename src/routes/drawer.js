@@ -13,7 +13,7 @@ import React from "react";
 const RootDrawerNavigator = createDrawerNavigator({
     Home: {
         screen: HomeStack,
-        icon: 'unnamed.png',
+        
     },
     Profile: {
         screen: ProfileStack,

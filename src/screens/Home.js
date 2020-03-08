@@ -1,31 +1,54 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Image, TextInput} from 'react-native';
 
 
-export default function Home({navigation}) {
 
-    const [reviews, setReviews] = useState([
-        { title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'lorem ipsum', key: '1' },
-        { title: 'Gotta Catch Them All (again)', rating: 4, body: 'lorem ipsum', key: '2' },
-        { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
-    ]);
 
-    return (
+export default class Home extends React.Component {
+
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        let datause = 'ziad';
+         return (
         <View style={styles.container}>
-            <FlatList
-                data={reviews}
-                renderItem={({ item }) =>(
-                    <TouchableOpacity onPress={() => navigation.navigate('ReviewDetails', item)}>
-                        <Text>{ item.title}</Text>
-                    </TouchableOpacity>
-
-                )}
+            <TouchableOpacity style={styles.ButtonStyle}>
+                <Text style={{textAlign : 'center'}}>Quelle matière souhaitez-vous enseigner ? </Text>
+            </TouchableOpacity>
 
 
-            />
+
+                <TextInput style={styles.ButtonStyle}
+                           placeholder="Liste des matières"
+                           />
+            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} title='GoTest'>
+                <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView} />
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} title='GoTest'>
+
+                <Image source={require('../../assets/Images/informatique.png')} style = {styles.ImageView} />
+
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} title='GoTest'>
+
+                <Image source={require('../../assets/Images/dev.jpg')} style = {styles.ImageView} />
+
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Description')} title='GoTest'>
+
+                <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView} />
+
+            </TouchableOpacity>
+
+
 
         </View>
     );
+    }
+
+   
 }
 
 const styles = StyleSheet.create({
@@ -35,4 +58,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    ButtonStyle:{
+        backgroundColor: 'gray',
+        borderRadius:5,
+        height : 50,
+        width : 100,
+
+
+    },
+    ImageView: {
+        width: 50,
+        height: 50
+
+
+    }
 });
