@@ -104,11 +104,7 @@ const styles = StyleSheet.create({
         marginLeft : 40 ,
     },
     imagesView:{
-<<<<<<<$$ HEAD
         flexDirection: 'column',
-        alignItems: 'center'
-=======
-        flexDirection: 'column'
->>>>>>> ec221fb6a8f2134dd1dd7fd5566e542afbfb7fcd
+        alignItems: 'center',
     }
 });
