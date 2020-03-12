@@ -12,64 +12,99 @@ export default class Home extends React.Component {
 
     render(){
         let datause = 'ziad';
-         return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.ButtonStyle}>
-                <Text style={{textAlign : 'center'}}>Quelle matière souhaitez-vous enseigner ? </Text>
-            </TouchableOpacity>
+        return (
+            <View style={styles.container}>
+                <View style={styles.container0}>
+                    <TouchableOpacity >
+                        <Text style={styles.text1 }>Quelle matière  </Text>
+                        <Text style={styles.text2 }>souhaitez-vous enseigner ? </Text>
+                    </TouchableOpacity>
 
 
 
-                <TextInput style={styles.ButtonStyle}
-                           placeholder="Liste des matières"
-                           />
-            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} title='GoTest'>
-                <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView} />
-            </TouchableOpacity>
-            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} title='GoTest'>
+                    <TextInput style={styles.input}
+                               placeholder="Liste des matières"
+                    />
+                </View>
 
-                <Image source={require('../../assets/Images/informatique.png')} style = {styles.ImageView} />
+                <View style={styles.imagesView}>
+                    <View style={styles.container1}>
+                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} >
+                            <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView1} />
+                        </TouchableOpacity>
+                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} >
 
-            </TouchableOpacity>
-            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} title='GoTest'>
+                            <Image source={require('../../assets/Images/informatique.png')} style = {styles.ImageView1} />
 
-                <Image source={require('../../assets/Images/dev.jpg')} style = {styles.ImageView} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.container2}>
+                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} >
 
-            </TouchableOpacity>
-            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Description')} title='GoTest'>
+                            <Image source={require('../../assets/Images/dev.jpg')} style = {styles.ImageView1} />
 
-                <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView} />
+                        </TouchableOpacity>
+                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Description')} >
 
-            </TouchableOpacity>
+                            <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView1} />
+
+                        </TouchableOpacity>
+                    </View>
+                </View>
 
 
-
-        </View>
-    );
+            </View>
+        );
     }
 
-   
+
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
     },
-    ButtonStyle:{
-        backgroundColor: 'gray',
+    container1: {
+        flexDirection: 'row'
+
+    },
+    container2 : {
+        flexDirection: 'row'
+    },
+    input:{
+        width : 340,
+        height : 50 ,
+        padding : 15 ,
+        borderWidth : 7,
+        borderColor : '#F5F1F1',
         borderRadius:5,
-        height : 50,
-        width : 100,
-
+        marginVertical : 40 ,
+        marginLeft : 40 ,
+    },
+    ImageView1: {
+        // justifyContent : 'center',
+        // alignItems : 'center',
+        width: 100,
+        height: 100,
+        marginLeft : 40 ,
+        marginVertical : 15 ,
 
     },
-    ImageView: {
-        width: 50,
-        height: 50
-
-
+    text1 : {
+        fontSize : 24,
+        color : '#62A7A9',
+        marginBottom : 10 ,
+        marginVertical : 40 ,
+        marginLeft : 40 ,
+    },
+    text2 : {
+        fontSize : 24,
+        color : '#62A7A9',
+        marginLeft : 40 ,
+    },
+    imagesView:{
+        flexDirection: 'column',
+        alignItems: 'center'
     }
 });

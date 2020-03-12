@@ -7,6 +7,7 @@ import Test from "../screens/Test"
 import React from 'react';
 import Description from "../screens/Description";
 import Contact from "../screens/Contact";
+import pdp from "../screens/pdp";
 const screens = {
   Home:{
       screen: Home,
@@ -43,6 +44,14 @@ const screens = {
     navigationOptions: ({ navigation }) => {
       return {
         headerTitle: () => <HeaderNone navigation={navigation} title='Contact'/>,
+      }
+    }
+  },
+  pdp: {
+    screen:pdp ,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <HeaderNone navigation={navigation} title='Image'/>,
       }
     }
   },

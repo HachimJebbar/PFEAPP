@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text } from 'react-native';
+import {View, TextInput, Text, Image, TouchableOpacity} from 'react-native';
 
 export default class Contact extends Component{
 
@@ -24,6 +24,9 @@ export default class Contact extends Component{
                 <TextInput
                     placeholder="Numéro de téléphone"
                 />
+                <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('pdp')} >
+                    <Text>Continuer</Text>
+                </TouchableOpacity>
             </View>
         );
     }
