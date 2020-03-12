@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         marginLeft : 40 ,
     },
     imagesView:{
-<<<<<<< HEAD
+<<<<<<<$$ HEAD
         flexDirection: 'column',
         alignItems: 'center'
 =======
