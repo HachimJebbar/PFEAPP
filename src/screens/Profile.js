@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
-import {Platform, StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity} from 'react-native';
+import React, { Component } from "react";
+import { FlatList, Text } from "react-native";
+import { Card } from "react-native-elements";
 
+<<<<<<< HEAD
 export default class Profile extends React.Component {
 	render() {
 		return (
@@ -25,9 +27,44 @@ export default class Profile extends React.Component {
 
 			</View>
 		);
+=======
+const data = [
+	{
+		imageUrl: "http://via.placeholder.com/160x160",
+		title: "something"
+	},
+	{
+		imageUrl: "http://via.placeholder.com/160x160",
+		title: "something two"
+	},
+	{
+		imageUrl: "http://via.placeholder.com/160x160",
+		title: "something three"
+	},
+	{
+		imageUrl: "http://via.placeholder.com/160x160",
+		title: "something four"
+	},
+	{
+		imageUrl: "http://via.placeholder.com/160x160",
+		title: "something five"
+	},
+	{
+		imageUrl: "http://via.placeholder.com/160x160",
+		title: "something six"
 	}
-}
+];
 
+export default class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			data: data
+		};
+>>>>>>> ec221fb6a8f2134dd1dd7fd5566e542afbfb7fcd
+	}
+
+<<<<<<< HEAD
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -63,5 +100,30 @@ const styles = StyleSheet.create({
 		fontSize : 24,
 		color : '#62A7A9',
 		marginLeft : 90 ,
+=======
+	render() {
+		return (
+			<FlatList
+				vertical
+				numColumns={2}
+				data={this.state.data}
+				renderItem={({ item: rowData }) => {
+					return (
+						<Card
+							title={null}
+							image={{ uri: rowData.imageUrl }}
+							containerStyle={{ padding: 0, width: 160 , alignItems : 'center'}}
+
+						>
+							<Text style={{ marginBottom: 10 }}>
+								{rowData.title}
+							</Text>
+						</Card>
+					);
+				}}
+				keyExtractor={(item, index) => index}
+			/>
+		);
+>>>>>>> ec221fb6a8f2134dd1dd7fd5566e542afbfb7fcd
 	}
-});
+}

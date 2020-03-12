@@ -68,6 +68,7 @@ export default class SignUpView extends Component {
                 </View >
                 <View style={styles.container0}>
                     <View View style={styles.container1}>
+<<<<<<< HEAD:src/screens/About.js
                         <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.onClickListener('sign_up')}>
                             <Text style={styles.signUpText}>S'inscrire</Text>
                         </TouchableHighlight>
@@ -80,6 +81,20 @@ export default class SignUpView extends Component {
                             <Text style={styles.signUpText}>Gmail</Text>
                         </TouchableHighlight>
                     </View>
+=======
+                <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.onClickListener('sign_up')}>
+                    <Text style={styles.signUpText}>S'inscrire</Text>
+                </TouchableHighlight>
+                    </View>
+                <View style={styles.container2}>
+                    <TouchableHighlight style={[styles.buttonContainer, styles.signupFButton]} onPress={() => this.onClickListener('sign_up')}>
+                        <Text style={styles.signUpText}>Facebook</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight style={[styles.buttonContainer, styles.signupGButton]} onPress={() => this.onClickListener('sign_up')}>
+                        <Text style={styles.signUpText}>Gmail</Text>
+                    </TouchableHighlight>
+                </View>
+>>>>>>> ec221fb6a8f2134dd1dd7fd5566e542afbfb7fcd:src/screens/Annonces.js
                 </View>
             </View>
         );
@@ -118,7 +133,11 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         height:45,
+<<<<<<< HEAD:src/screens/About.js
         // flexDirection: 'row',
+=======
+       // flexDirection: 'row',
+>>>>>>> ec221fb6a8f2134dd1dd7fd5566e542afbfb7fcd:src/screens/Annonces.js
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom:20,
@@ -162,4 +181,8 @@ const styles = StyleSheet.create({
     container1 : {
         flexDirection: 'row'
     },
+<<<<<<< HEAD:src/screens/About.js
 });
+=======
+});
+>>>>>>> ec221fb6a8f2134dd1dd7fd5566e542afbfb7fcd:src/screens/Annonces.js

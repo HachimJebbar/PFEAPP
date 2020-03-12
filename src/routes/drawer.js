@@ -1,6 +1,6 @@
 import {createDrawerNavigator, DrawerItems} from "react-navigation-drawer";
 import {createAppContainer} from "react-navigation";
-import AboutStack from "./AboutStack";
+import AnnoncesStack from "./AnnoncesStack";
 import HomeStack from "./HomeStack";
 import ProfileStack from "./ProfileStack";
 import ScrollView from "react-native-web/dist/exports/ScrollView";
@@ -13,13 +13,21 @@ import React from "react";
 const RootDrawerNavigator = createDrawerNavigator({
     Home: {
         screen: HomeStack,
-        
     },
     Profile: {
         screen: ProfileStack,
     },
-    About: {
-        screen: AboutStack,
+    Annonces: {
+        screen: AnnoncesStack,
+    },
+    Demandes: {
+        screen: AnnoncesStack,
+    },
+    Contact:{
+        screen:AnnoncesStack,
+    },
+    Deconnexion:{
+        screen:AnnoncesStack
     },
 },{
     contentComponent: (props) => (
@@ -28,7 +36,7 @@ const RootDrawerNavigator = createDrawerNavigator({
                 <Body>
                         <Image
                             style={styles.DrawerImage}
-                            source={require('../../assets/Images/App-Image.png')} />
+                            source={require('../../assets/Images/professeur.png')} />
                 </Body>
             </Header>
             <Content>
