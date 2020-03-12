@@ -31,7 +31,7 @@ export default class SignUpView extends Component {
         return (
             <View style={styles.container}>
 
-                <Text style={styles.text}> Devenir Prof </Text>{}
+                <Text style={styles.text}> Inscrivez-Vous </Text>
                 <View style={styles.inputContainer}>
                     <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/male-user/ultraviolet/50/3498db'}}/>
                     <TextInput style={styles.inputs}
@@ -51,31 +51,36 @@ export default class SignUpView extends Component {
                 </View>
 
                 <View style={styles.inputContainer}>
-                <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
-                <TextInput style={styles.inputs}
-                           placeholder="Entrer le mot de passe"
-                           secureTextEntry={true}
-                           underlineColorAndroid='transparent'
-                           onChangeText={(password) => this.setState({password})}/>
-            </View>
+                    <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
+                    <TextInput style={styles.inputs}
+                               placeholder="Entrer le mot de passe"
+                               secureTextEntry={true}
+                               underlineColorAndroid='transparent'
+                               onChangeText={(password) => this.setState({password})}/>
+                </View>
                 <View style={styles.inputContainer}>
                     <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
                     <TextInput style={styles.inputs}
                                placeholder="Confirmer le mot de passe"
                                secureTextEntry={true}
                                underlineColorAndroid='transparent'
-                               onChangeText={(cpassword) => this.setState({cpassword})}/>
-                </View>
-
+                               onChangeText={(password) => this.setState({password})}/>
+                </View >
+                <View style={styles.container0}>
+                    <View View style={styles.container1}>
                 <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.onClickListener('sign_up')}>
                     <Text style={styles.signUpText}>S'inscrire</Text>
                 </TouchableHighlight>
-                <TouchableHighlight style={[styles.buttonContainer, styles.signupFButton]} onPress={() => this.onClickListener('sign_up')}>
-                    <Text style={styles.signUpText}>Facebook</Text>
-                </TouchableHighlight>
-                <TouchableHighlight style={[styles.buttonContainer, styles.signupGButton]} onPress={() => this.onClickListener('sign_up')}>
-                    <Text style={styles.signUpText}>Gmail</Text>
-                </TouchableHighlight>
+                    </View>
+                <View style={styles.container2}>
+                    <TouchableHighlight style={[styles.buttonContainer, styles.signupFButton]} onPress={() => this.onClickListener('sign_up')}>
+                        <Text style={styles.signUpText}>Facebook</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight style={[styles.buttonContainer, styles.signupGButton]} onPress={() => this.onClickListener('sign_up')}>
+                        <Text style={styles.signUpText}>Gmail</Text>
+                    </TouchableHighlight>
+                </View>
+                </View>
             </View>
         );
     }
@@ -84,9 +89,7 @@ export default class SignUpView extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#7fffd4',
+        backgroundColor: '#fff',
     },
     inputContainer: {
         borderBottomColor: '#F5FCFF',
@@ -100,10 +103,12 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     inputs:{
-        height:45,
-        marginLeft:16,
-        borderBottomColor: '#FFFFFF',
-        flex:1,
+        width : 320,
+        height : 50 ,
+        padding : 15 ,
+        borderWidth : 7,
+        borderColor : '#F5F1F1',
+        marginVertical : 40 ,
     },
     inputIcon:{
         width:30,
@@ -113,7 +118,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         height:45,
-        flexDirection: 'row',
+       // flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom:20,
@@ -122,27 +127,39 @@ const styles = StyleSheet.create({
     },
     signupButton: {
         backgroundColor: "#E9967A",
+        marginLeft : 55 ,
+        width : 300,
     },
     signUpText: {
         color: 'white',
     },
     signupFButton: {
         backgroundColor: "#4267B2",
-    },
-    signUpFText: {
-        color: 'white',
+        width : 140,
     },
     signupGButton: {
         backgroundColor: "#DB4437",
-    },
-    signUpGText: {
-        color: 'white',
+        width : 140,
     },
     text: {
-        color: '#E9967A',
-        fontSize: 20,
+        color: '#62A7A9',
+        fontSize: 30,
         fontWeight: 'bold',
+        marginBottom : 20 ,
+        marginVertical : 40 ,
+        marginLeft : 90 ,
 
-
-    }
+    },
+    container2 : {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        //alignItems: 'center',
+        width: '100%'
+    },
+    container0:{
+        flexDirection: 'column'
+    },
+    container1 : {
+        flexDirection: 'row'
+    },
 });
