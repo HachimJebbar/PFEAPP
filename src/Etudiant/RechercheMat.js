@@ -4,51 +4,35 @@ import {StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Image, TextI
 
 
 
-export default class Home extends React.Component {
+export default class RecherchePr extends React.Component {
 
     constructor(props){
         super(props);
     }
 
     render(){
-        let datause = 'ziad';
+
         return (
             <View style={styles.container}>
                 <View style={styles.container0}>
                     <TouchableOpacity >
                         <Text style={styles.text1 }>Quelle matière  </Text>
-                        <Text style={styles.text2 }>souhaitez-vous enseigner ? </Text>
+                        <Text style={styles.text2 }>souhaitez-vous étudier ? </Text>
                     </TouchableOpacity>
 
 
 
                     <TextInput style={styles.input}
-                               placeholder="Liste des matières"
+                               placeholder="Matière"
                     />
                 </View>
 
                 <View style={styles.imagesView}>
                     <View style={styles.container1}>
-                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} >
-                            <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView1} />
+                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Prerequis')} >
+                           <Text>Confirmer</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('informatique')} >
 
-                            <Image source={require('../../assets/Images/informatique.png')} style = {styles.ImageView1} />
-
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.container2}>
-                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('dev')} >
-
-                            <Image source={require('../../assets/Images/dev.jpg')} style = {styles.ImageView1} />
-
-                        </TouchableOpacity>
-                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communication')} >
-
-                            <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView1} />
-
-                        </TouchableOpacity>
                     </View>
                 </View>
 
@@ -56,7 +40,6 @@ export default class Home extends React.Component {
             </View>
         );
     }
-
 
 }
 
