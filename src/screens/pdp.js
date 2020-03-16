@@ -48,8 +48,10 @@ export default class Pdp extends Component{
     render() {
 
         return (
-            <View style={{flexDirection: 'column', marginTop: 10}}>
-                <Text style={{fontSize: 15}}>Documents (max: 5)</Text>
+            <View style={styles.container}>
+            <View style={{flexDirection: 'column', marginTop: 60,}}>
+                <Text style={styles.text1 }> Votre Profil !!</Text>
+
                 <View style={styles.documents}>
                     <TextInput
                         style={styles.imageInput}
@@ -64,10 +66,12 @@ export default class Pdp extends Component{
                     <TouchableOpacity style={styles.goChooseButton} onPress={this.onChooseImagePress}>
                         <Text style={styles.goChooseButtonText}>Go choose</Text>
                     </TouchableOpacity >
+
                 </View>
+                <Text style={{fontSize: 15,marginLeft:140,marginTop:10}}>Documents (max: 5)</Text>
                 <View>
                     {
-                        Object.keys(this.state.images).length   === 0 ? <View style={{marginTop: 8}}><Text style={{opacity: 0.4}}>No documents uploaded</Text></View>
+                        Object.keys(this.state.images).length   === 0 ? <View style={{marginTop: 8}}><Text style={{opacity: 0.4,marginLeft:133,}}>No documents uploaded</Text></View>
                             :
                             this.state.images.map((image) => {
                                 return (
@@ -80,8 +84,11 @@ export default class Pdp extends Component{
                             })
                     }
                 </View>
+                <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('pdp')} >
+                    <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Terminer mon annonce</Text>
+                </TouchableOpacity>
             </View>
-
+            </View>
 
 
 
@@ -108,13 +115,20 @@ const styles = StyleSheet.create({
         borderColor: '#a9a9a1',
         borderBottomWidth: 1,
         opacity: 0.5,
-        width: "60%",
+        width: "80%",
         alignSelf: 'center',
         marginBottom: 8
     },
     inputs: {
         marginTop: 5,
         width: '90%'
+    },
+    text1 : {
+        fontSize : 35,
+        color : '#62A7A9',
+        marginLeft : 90 ,
+        fontWeight: 'bold',
+        marginVertical:30,
     },
     stadiumAddress: {
         flexDirection: 'row',
@@ -124,24 +138,25 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     documents: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'space-between',
         width: '100%',
         alignSelf: 'center',
     },
     goChooseButton: {
-        borderRadius: 30/2,
+        borderRadius: 20,
         backgroundColor: "#E8F7FF",
         paddingTop: 6,
         paddingBottom: 6,
         paddingLeft: 12,
         paddingRight: 12,
         justifyContent: 'center',
-        height: 30,
+        height: 50,
+        width:250,
         alignSelf: 'center'
     },
     goChooseButtonText: {
-        fontSize: 10,
+        fontSize: 15,
         color: "#5780D9",
         textTransform: "uppercase",
         textAlign: "center",
@@ -177,7 +192,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '92%',
-        marginTop: 8
-    }
+        marginTop: 8,
+
+    },
+    ButtonStyle:{
+        backgroundColor: '#fff',
+        borderWidth:2,
+        borderRadius:10,
+        height : 50,
+        width : 270,
+        marginLeft : 70 ,
+        paddingLeft : 15,
+        paddingTop : 12,
+        marginBottom: 10,
+        alignItems : 'center',
+        marginVertical: 70,
+    },
 });
 

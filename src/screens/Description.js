@@ -1,33 +1,7 @@
 import React, { Component } from 'react';
-import {View, TextInput, Text, Button} from 'react-native';
+import {View, TextInput, Text, Button, StyleSheet, TouchableOpacity} from 'react-native';
 
 
-const data = [
-    {
-        imageUrl: "http://via.placeholder.com/160x160",
-        title: "something"
-    },
-    {
-        imageUrl: "http://via.placeholder.com/160x160",
-        title: "something two"
-    },
-    {
-        imageUrl: "http://via.placeholder.com/160x160",
-        title: "something three"
-    },
-    {
-        imageUrl: "http://via.placeholder.com/160x160",
-        title: "something four"
-    },
-    {
-        imageUrl: "http://via.placeholder.com/160x160",
-        title: "something five"
-    },
-    {
-        imageUrl: "http://via.placeholder.com/160x160",
-        title: "something six"
-    }
-];
 
 export default class App extends Component {
     constructor(props) {
@@ -39,21 +13,65 @@ export default class App extends Component {
     render() {
 
         return (
-            <View
-                style={{
-                    backgroundColor: '#fff',
-                    borderBottomColor: '#000000',
-                    borderBottomWidth: 1,
-                }}>
-                <TextInput
-                    placeholder="Description de votre profil"
+            <View style={styles.container }>
+                <View style={styles.container1 }>
+                    <Text style={styles.text1 }>Description  </Text>
+                    <Text style={styles.text1 }>de votre profil </Text>
+                <TextInput style={styles.input } multiline
+                    placeholder="ex : Etudiant en école d'ingénieur donne cours de maths et physique du collége au lycée
+                    à Rabat 'ou' Pianiste concertiste 15ans d'expérience donne cours de pia,o et solfége à domicile"
                 />
-                <TextInput
-                    placeholder="Votre parcours"
+                </View>
+                <View>
+                    <Text style={styles.text1 }>Description  </Text>
+                    <Text style={styles.text1 }>de votre parcours</Text>
+                <TextInput style={styles.input } multiline
+                    placeholder="ex : Je suis ingénieur(e) / étudiant(e) / musicien(ne) .... je donne des cours depuis
+                    ..... je suis diplomé(e)"
                 />
-                <Button onPress={() => this.props.navigation.navigate('Contact')} title='Continuer'/>
-
+                </View>
+                <View>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Contact')} style={styles.ButtonStyle}>
+                        <Text style={{fontSize : 18,color: 'white' }}>Continuer</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
              )
     }
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+    container1: {
+        marginVertical: 35,
+    },
+    input:{
+        width : 340,
+        height : 120 ,
+        padding : 15 ,
+        borderWidth : 7,
+        borderColor : '#F5F1F1',
+        borderRadius:5,
+        marginVertical : 10 ,
+        marginLeft : 40 ,
+    },
+    text1 : {
+        fontSize : 30,
+        color : '#62A7A9',
+        marginLeft : 40 ,
+        fontWeight: 'bold',
+    },
+    ButtonStyle:{
+        backgroundColor: '#62A7A9',
+        borderRadius:10,
+        height : 50,
+        width : 250,
+        marginLeft : 80 ,
+        paddingLeft : 15,
+        paddingTop : 12,
+        marginBottom: 10,
+        alignItems : 'center',
+    },
+});
