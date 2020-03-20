@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import {FlatList, StyleSheet, Text} from "react-native";
+import {FlatList, ScrollView, StyleSheet, Text} from "react-native";
 import { Card } from "react-native-elements";
 
 
 const data = [
 	{
 		imageUrl: "http://via.placeholder.com/160x160",
-		title: "something"
+		title: "Profil"
 	},
 	{
 		imageUrl: "http://via.placeholder.com/160x160",
-		title: "something two"
+		title: "Mes annonces"
 	},
 	{
 		imageUrl: "http://via.placeholder.com/160x160",
-		title: "something three"
+		title: "Messagerie"
 	},
 	{
 		imageUrl: "http://via.placeholder.com/160x160",
@@ -40,6 +40,7 @@ export default class App extends Component {
 
 	render() {
 		return (
+			<ScrollView>
 			<FlatList
 				vertical
 				numColumns={2}
@@ -59,7 +60,9 @@ export default class App extends Component {
 					);
 				}}
 				keyExtractor={(item, index) => index}
+
 			/>
+			</ScrollView>
 		);
 	}
 

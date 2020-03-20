@@ -18,6 +18,11 @@ export default class informatique extends React.Component {
 
                 <TouchableOpacity activeOpacity = { .5 } onPress={ this.callFun }>
                     <Text>Algorithme</Text>
+                    <Text>Java</Text>
+                    <Text>Programmation C</Text>
+                    <Text>React Native</Text>
+                    <Text>PHP</Text>
+                    <Text>JavaScript</Text>
 
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Description')}>

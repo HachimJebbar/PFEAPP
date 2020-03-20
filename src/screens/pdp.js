@@ -32,8 +32,8 @@ export default class Pdp extends Component{
     };
 
     onChooseImagePress = async () => {
-        if (Object.keys(this.state.images).length === 5){
-            Alert.alert("Attention!!", "Maximum of documents to add is 5..");
+        if (Object.keys(this.state.images).length === 1){
+            Alert.alert("Attention!!", "Maximum of documents to add is 1..");
         }else if (this.state.imageName === ""){
             Alert.alert("Attention!!", "Please give the image a name before uploading it..");
         }else{
@@ -48,6 +48,7 @@ export default class Pdp extends Component{
     render() {
 
         return (
+            <ScrollView>
             <View style={styles.container}>
             <View style={{flexDirection: 'column', marginTop: 60,}}>
                 <Text style={styles.text1 }> Votre Profil !!</Text>
@@ -68,7 +69,7 @@ export default class Pdp extends Component{
                     </TouchableOpacity >
 
                 </View>
-                <Text style={{fontSize: 15,marginLeft:140,marginTop:10}}>Documents (max: 5)</Text>
+                <Text style={{fontSize: 15,marginLeft:140,marginTop:10}}>Documents (max: 1)</Text>
                 <View>
                     {
                         Object.keys(this.state.images).length   === 0 ? <View style={{marginTop: 8}}><Text style={{opacity: 0.4,marginLeft:133,}}>No documents uploaded</Text></View>
@@ -77,8 +78,16 @@ export default class Pdp extends Component{
                                 return (
                                     <View style={styles.documentsAdded} key={image.uri}>
                                         <Text>{image.name}</Text>
+
                                         <Icon onPress={() => this.handleDelete(image.uri)} name="trash" size={18} color="#000" style={{opacity: 0.4}} />
+                                        {image && (
+                                            <Image
+                                                source={{ uri: image.uri }}
+                                                style={{ width: 300, height: 300 }}
+                                            />
+                                        )}
                                     </View>
+
 
                                 )
                             })
@@ -89,6 +98,7 @@ export default class Pdp extends Component{
                 </TouchableOpacity>
             </View>
             </View>
+            </ScrollView>
 
 
 

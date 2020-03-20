@@ -17,7 +17,11 @@ export default class communication extends React.Component {
 
 
                 <TouchableOpacity activeOpacity = { .5 } onPress={ this.callFun }>
-                    <Text>Algorithme</Text>
+                    <Text>Anglais</Text>
+                    <Text>Français</Text>
+                    <Text>Allemand</Text>
+                    <Text>Espagnole</Text>
+                    <Text>Arabe</Text>
 
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Description')}>
