@@ -14,39 +14,31 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as  ImagePicker from 'expo-image-picker';
 
-export default class Pdp extends Component{
-
+export default class ProfilUp extends Component{
     state= {
         images: [],
         imageName: "",
     }
-
     constructor(props) {
         super(props);
         const {state} = props.navigation;
     }
-
     handleDelete = imageUri => {
         const images = this.state.images.filter(image => image.uri !== imageUri);
         this.setState({ images: images });
     };
-
     onChooseImagePress = async () => {
         if (Object.keys(this.state.images).length === 1){
             Alert.alert("Attention!!", "Maximum of documents to add is 1..");
         }else if (this.state.imageName === ""){
             Alert.alert("Attention!!", "Please give the image a name before uploading it..");
         }else{
-
             let result = await ImagePicker.launchImageLibraryAsync();
             this.state.images.push({uri: result.uri, name: this.state.imageName});
             this.setState({imageName: ""})
-
-
         }
     };
     render() {
-
         return (
             <ScrollView>
             <View style={styles.container}>
@@ -65,7 +57,7 @@ export default class Pdp extends Component{
                         onChangeText={(value) => { this.setState({imageName: value})}}
                     />
                     <TouchableOpacity style={styles.goChooseButton} onPress={this.onChooseImagePress}>
-                        <Text style={styles.goChooseButtonText}>Modifier photo de profil</Text>
+                        <Text style={styles.goChooseButtonText}>Go choose</Text>
                     </TouchableOpacity >
 
                 </View>
@@ -95,11 +87,20 @@ export default class Pdp extends Component{
                 </View>
 
 
+                <Text> Adresse : </Text>
+                <TextInput placeholder={"Les infos mn dataBase"}></TextInput>
+                <Text> Téléphone : </Text>
+                <TextInput placeholder={"Les infos mn dataBase"}></TextInput>
+                <Text> E-mail : </Text>
+                <TextInput placeholder={"Les infos mn dataBase"}></TextInput>
 
 
                 <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('pdp')} >
-                    <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Terminer mon annonce</Text>
+                    <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Confirmer </Text>
                 </TouchableOpacity>
+
+
+
             </View>
             </View>
             </ScrollView>
