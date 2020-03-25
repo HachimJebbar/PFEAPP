@@ -16,20 +16,24 @@ export default class RecherchePr extends React.Component {
             <View style={styles.container}>
                 <View style={styles.container0}>
                     <TouchableOpacity >
-                        <Text style={styles.text1 }>Les prérequis de la matière "XXXXX" sont : </Text>
-                        <Text style={styles.text2 }>"XXXXXXX" </Text>
+                        <Text style={styles.text1 }>Matière "XXXXX"  </Text>
+                        <Text style={styles.text2 } multine>Vous êtes en "nv scolaire" Vous devez disposer
+                        des préreques suivantes pour qu'on puisse vous aidez à améliorer votre niveau :</Text>
+                        <Text style={styles.text3 }>-Prérequis numero 1  </Text>
+                        <Text style={styles.text3 }>-Prérequis numero 2 </Text>
+                        <Text style={styles.text3 }>-Prérequis numero 3 </Text>
+
                     </TouchableOpacity>
 
                 </View>
 
-                <View style={styles.imagesView}>
                     <View style={styles.container1}>
-                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('RecherchePr')} >
-                            <Text>Confirmer</Text>
+                        <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('RecherchePr')} >
+                            <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Confirmer</Text>
                         </TouchableOpacity>
 
                     </View>
-                </View>
+
 
 
             </View>
@@ -50,39 +54,40 @@ const styles = StyleSheet.create({
     container2 : {
         flexDirection: 'row'
     },
-    input:{
-        width : 340,
-        height : 50 ,
-        padding : 15 ,
-        borderWidth : 7,
-        borderColor : '#F5F1F1',
-        borderRadius:5,
-        marginVertical : 40 ,
-        marginLeft : 40 ,
-    },
-    ImageView1: {
-        // justifyContent : 'center',
-        // alignItems : 'center',
-        width: 100,
-        height: 100,
-        marginLeft : 40 ,
-        marginVertical : 15 ,
-
-    },
     text1 : {
-        fontSize : 24,
+        fontSize : 30,
         color : '#62A7A9',
         marginBottom : 10 ,
         marginVertical : 40 ,
-        marginLeft : 40 ,
+        fontWeight: 'bold',
+        textAlign : 'center',
     },
     text2 : {
         fontSize : 24,
-        color : '#62A7A9',
-        marginLeft : 40 ,
+        textAlign : 'center',
+        color : '#AFA5A5',
+        marginVertical : 15 ,
+
     },
-    imagesView:{
-        flexDirection: 'column',
-        alignItems: 'center',
-    }
+    text3 : {
+        fontSize : 24,
+        color : '#AFA5A5',
+        marginBottom : 10 ,
+        marginVertical : 20 ,
+        fontWeight: 'bold',
+        textAlign : 'center',
+    },
+    ButtonStyle:{
+        backgroundColor: '#fff',
+        borderColor : '#828788',
+        borderWidth:2,
+        borderRadius:10,
+        height : 50,
+        width : 250,
+        marginLeft : 80 ,
+        paddingLeft : 15,
+        paddingTop : 12,
+        marginVertical:40,
+        alignItems : 'center',
+    },
 });

@@ -1,88 +1,55 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet,
+    ScrollView,
+    Image,
     Text,
     View,
-    TextInput,
-    Button,
-    TouchableHighlight,
-    Image,
-    Alert
+    FlatList,
+    TouchableOpacity,
+    StyleSheet,
+    CheckBox,
+    TouchableHighlight
 } from 'react-native';
 
-export default class SignUpView extends Component {
-    state;
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            fullName: '',
-            email   : '',
-            password: '',
-            cpassword:'',
-        }
-    }
-
-    onClickListener = (viewId) => {
-        Alert.alert("Alert", "Button pressed "+viewId);
-    }
-
+export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <ScrollView>
 
-                <Text style={styles.text}> Inscrivez-Vous </Text>
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/male-user/ultraviolet/50/3498db'}}/>
-                    <TextInput style={styles.inputs}
-                               placeholder="Nom Complet"
-                               keyboardType="email-address"
-                               underlineColorAndroid='transparent'
-                               onChangeText={(fullName) => this.setState({fullName})}/>
-                </View>
+                    <TouchableOpacity >
+                        <Text style={styles.text1 } multine>Mes Annonces</Text>
+                    </TouchableOpacity>
 
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
-                    <TextInput style={styles.inputs}
-                               placeholder="Email"
-                               keyboardType="email-address"
-                               underlineColorAndroid='transparent'
-                               onChangeText={(email) => this.setState({email})}/>
-                </View>
+                    <ScrollView>
+                        <View style={styles.container1 }>
+                            <View style={styles.container2 }>
+                                <View style={styles.container21 }>
+                                    <View style={styles.container212 }>
+                                        <Image style={styles.ImageView} source={{uri: "https://reactnative.dev/img/tiny_logo.png"}} />
+                                        <Text style={styles.text3 }multine>100DH/H Matiere</Text>
+                                    </View>
+                                    <View style={styles.container211 }>
+                                        <View style={{flexDirection:'row'} }>
+                                        <CheckBox style={{ iconSize:'large'}}
 
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
-                    <TextInput style={styles.inputs}
-                               placeholder="Entrer le mot de passe"
-                               secureTextEntry={true}
-                               underlineColorAndroid='transparent'
-                               onChangeText={(password) => this.setState({password})}/>
-                </View>
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
-                    <TextInput style={styles.inputs}
-                               placeholder="Confirmer le mot de passe"
-                               secureTextEntry={true}
-                               underlineColorAndroid='transparent'
-                               onChangeText={(password) => this.setState({password})}/>
-                </View >
-                <View style={styles.container0}>
-                    <View style={styles.container1}>
-                        <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.onClickListener('sign_up')}>
-                            <Text style={styles.signUpText}>S'inscrire</Text>
-                        </TouchableHighlight>
-                    </View>
-                    <View style={styles.container2}>
-                        <TouchableHighlight style={[styles.buttonContainer, styles.signupFButton]} onPress={() => this.onClickListener('sign_up')}>
-                            <Text style={styles.signUpText}>Facebook</Text>
-                        </TouchableHighlight>
-                        <TouchableHighlight style={[styles.buttonContainer, styles.signupGButton]} onPress={() => this.onClickListener('sign_up')}>
-                            <Text style={styles.signUpText}>Gmail</Text>
-                        </TouchableHighlight>
-                    </View>
-                    </View>
+                                        />
+                                        <Text style={styles.text2 } >Publier</Text>
+                                        </View>
+                                        <TouchableHighlight style={[styles.buttonContainer, styles.modifier]} onPress={() => this.onClickListener('sign_up')}>
+                                            <Text style={styles.text5}>Modifier</Text>
+                                        </TouchableHighlight>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                    </ScrollView>
 
-                </View>
+
+
+
+                </ScrollView>
+            </View>
         );
     }
 }
@@ -90,77 +57,76 @@ export default class SignUpView extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        width: '100%',
+        height: '100%',
+        backgroundColor:  '#fff',
     },
-    inputContainer: {
-        borderBottomColor: '#F5FCFF',
-        backgroundColor: '#FFFFFF',
-        borderRadius:30,
-        borderBottomWidth: 1,
-        width:250,
-        height:45,
-        marginBottom:20,
-        flexDirection: 'row',
-        alignItems:'center'
-    },
-    inputs:{
-        width : 320,
-        height : 50 ,
-        padding : 15 ,
-        borderWidth : 7,
-        borderColor : '#F5F1F1',
-        marginVertical : 40 ,
-    },
-    inputIcon:{
-        width:30,
-        height:30,
-        marginLeft:15,
-        justifyContent: 'center'
-    },
-    buttonContainer: {
-        height:45,
-        // flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom:20,
-        width:250,
-        borderRadius:30,
-    },
-    signupButton: {
-        backgroundColor: "#E9967A",
-        marginLeft : 55 ,
-        width : 300,
-    },
-    signUpText: {
-        color: 'white',
-    },
-    signupFButton: {
-        backgroundColor: "#4267B2",
-        width : 140,
-    },
-    signupGButton: {
-        backgroundColor: "#DB4437",
-        width : 140,
-    },
-    text: {
-        color: '#62A7A9',
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginBottom : 20 ,
-        marginVertical : 40 ,
-        marginLeft : 90 ,
-
-    },
-    container2 : {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        //alignItems: 'center',
-        width: '100%'
-    },
-    container0:{
-        flexDirection: 'column'
-    },
-    container1 : {
+    container1: {
         flexDirection: 'row'
+    },
+    container2: {
+        flexDirection: 'column',
+        marginLeft : 40 ,
+        marginVertical:20,
+        backgroundColor:  '#F5F1F1',
+        marginRight:40,
+        height: '70%',
+    },
+    container21: {
+        flexDirection: 'row',
+        marginVertical : 30 ,
+        width : '70%',
+        height : 180 ,
+        borderRadius:50,
+    },
+    container211: {
+        flexDirection: 'column',
+        width : '70%',
+        marginLeft:100,
+    },
+    container212: {
+        flexDirection: 'column',
+        width : '35%',
+    },
+    ImageView:{
+        height: 70,
+        borderRadius: 80,
+        marginLeft : 15 ,
+    },
+    text1 : {
+        fontSize : 24,
+        color : '#62A7A9',
+        fontWeight: 'bold',
+        marginBottom : 10 ,
+        marginVertical : 40 ,
+        marginLeft : 40 ,
+    },
+    text3 : {
+        fontSize : 15,
+        color : '#AFA5A5',
+        marginBottom : 10 ,
+        marginTop : 15 ,
+        fontWeight: 'bold',
+        marginLeft : 15 ,
+    },
+    text5 : {
+        fontSize : 19,
+        color : '#AFA5A5',
+        marginBottom : 10 ,
+        fontWeight: 'bold',
+        borderWidth : 3,
+        borderRadius:20,
+        borderColor: '#fff',
+        padding:11,
+        width : '60%',
+        marginHorizontal:5,
+        marginLeft : 5 ,
+        marginTop: 20,
+    },
+    text2 : {
+        fontSize : 19,
+        color : '#AFA5A5',
+        marginVertical:3,
+        fontWeight: 'bold',
     },
 });

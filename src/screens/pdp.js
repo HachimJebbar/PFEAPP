@@ -77,15 +77,19 @@ export default class Pdp extends Component{
                             this.state.images.map((image) => {
                                 return (
                                     <View style={styles.documentsAdded} key={image.uri}>
-                                        <Text>{image.name}</Text>
+                                        <View style={styles.container1}>
+                                        <Text style={styles.NomImage}>{image.name}</Text>
 
                                         <Icon onPress={() => this.handleDelete(image.uri)} name="trash" size={18} color="#000" style={{opacity: 0.4}} />
+                                        </View>
+                                        <View style={styles.container2}>
                                         {image && (
-                                            <Image
+                                            <Image style = {styles.ImageView1}
                                                 source={{ uri: image.uri }}
-                                                style={{ width: 300, height: 300 }}
+
                                             />
                                         )}
+                                        </View>
                                     </View>
 
 
@@ -108,6 +112,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+    },
+    container1: {
+        flexDirection: 'row',
+    },
+    container2: {
+        flexDirection: 'row',
     },
     input: {
         height: 40,
@@ -199,7 +209,7 @@ const styles = StyleSheet.create({
         opacity: 0.5
     },
     documentsAdded: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'space-between',
         width: '92%',
         marginTop: 8,
@@ -217,6 +227,19 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         alignItems : 'center',
         marginVertical: 70,
+    },
+    ImageView1: {
+         justifyContent : 'center',
+         alignItems : 'center',
+        width: 100,
+        height: 100,
+        marginLeft : 40 ,
+        borderColor : '#828788',
+        borderWidth:2,
+        borderRadius:100,
+    },
+    NomImage : {
+        fontSize: 15,
     },
 });
 
