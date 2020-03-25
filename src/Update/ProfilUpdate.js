@@ -14,39 +14,31 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as  ImagePicker from 'expo-image-picker';
 
-export default class Pdp extends Component{
-
+export default class ProfilUp extends Component{
     state= {
         images: [],
         imageName: "",
     }
-
     constructor(props) {
         super(props);
         const {state} = props.navigation;
     }
-
     handleDelete = imageUri => {
         const images = this.state.images.filter(image => image.uri !== imageUri);
         this.setState({ images: images });
     };
-
     onChooseImagePress = async () => {
         if (Object.keys(this.state.images).length === 1){
             Alert.alert("Attention!!", "Maximum of documents to add is 1..");
         }else if (this.state.imageName === ""){
             Alert.alert("Attention!!", "Please give the image a name before uploading it..");
         }else{
-
             let result = await ImagePicker.launchImageLibraryAsync();
             this.state.images.push({uri: result.uri, name: this.state.imageName});
             this.setState({imageName: ""})
-
-
         }
     };
     render() {
-
         return (
             <ScrollView>
             <View style={styles.container}>
@@ -65,7 +57,7 @@ export default class Pdp extends Component{
                         onChangeText={(value) => { this.setState({imageName: value})}}
                     />
                     <TouchableOpacity style={styles.goChooseButton} onPress={this.onChooseImagePress}>
-                        <Text style={styles.goChooseButtonText}>Modifier photo de profil</Text>
+                        <Text style={styles.goChooseButtonText}>Go choose</Text>
                     </TouchableOpacity >
 
                 </View>
@@ -77,19 +69,15 @@ export default class Pdp extends Component{
                             this.state.images.map((image) => {
                                 return (
                                     <View style={styles.documentsAdded} key={image.uri}>
-                                        <View style={styles.container1}>
-                                        <Text style={styles.NomImage}>{image.name}</Text>
+                                        <Text>{image.name}</Text>
 
                                         <Icon onPress={() => this.handleDelete(image.uri)} name="trash" size={18} color="#000" style={{opacity: 0.4}} />
-                                        </View>
-                                        <View style={styles.container2}>
                                         {image && (
-                                            <Image style = {styles.ImageView1}
+                                            <Image
                                                 source={{ uri: image.uri }}
-
+                                                style={{ width: 300, height: 300 }}
                                             />
                                         )}
-                                        </View>
                                     </View>
 
 
@@ -99,11 +87,20 @@ export default class Pdp extends Component{
                 </View>
 
 
+                <Text> Adresse : </Text>
+                <TextInput placeholder={"Les infos mn dataBase"}></TextInput>
+                <Text> Téléphone : </Text>
+                <TextInput placeholder={"Les infos mn dataBase"}></TextInput>
+                <Text> E-mail : </Text>
+                <TextInput placeholder={"Les infos mn dataBase"}></TextInput>
 
 
                 <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('pdp')} >
-                    <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Terminer mon annonce</Text>
+                    <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Confirmer </Text>
                 </TouchableOpacity>
+
+
+
             </View>
             </View>
             </ScrollView>
@@ -116,12 +113,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-    },
-    container1: {
-        flexDirection: 'row',
-    },
-    container2: {
-        flexDirection: 'row',
     },
     input: {
         height: 40,
@@ -213,7 +204,7 @@ const styles = StyleSheet.create({
         opacity: 0.5
     },
     documentsAdded: {
-        flexDirection: 'column',
+        flexDirection: 'row',
         justifyContent: 'space-between',
         width: '92%',
         marginTop: 8,
@@ -231,19 +222,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         alignItems : 'center',
         marginVertical: 70,
-    },
-    ImageView1: {
-         justifyContent : 'center',
-         alignItems : 'center',
-        width: 100,
-        height: 100,
-        marginLeft : 40 ,
-        borderColor : '#828788',
-        borderWidth:2,
-        borderRadius:100,
-    },
-    NomImage : {
-        fontSize: 15,
     },
 });
 
