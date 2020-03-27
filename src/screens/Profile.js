@@ -15,40 +15,57 @@ export default class Profile extends React.Component {
 		return (
 			<View style={styles.container}>
 				<View style={styles.container0}>
-					<Image source={require('../../assets/Images/profil.png')} style = {styles.ImageView1} />
-					<Text>Profil </Text>
-
-				</View>
-
 				<View style={styles.imagesView}>
 					<View style={styles.container1}>
+						<View style={styles.container11}>
 						<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} >
 							<Image source={require('../../assets/Images/info_general.png')} style = {styles.ImageView1} />
-							<Text>Informations générales </Text>
+							<Text style={styles.text }>Informations </Text>
 
 						</TouchableOpacity>
-						<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('informatique')} >
-
-							<Image source={require('../../assets/Images/Annonces.png')} style = {styles.ImageView1} />
-							<Text>Annonces </Text>
-						</TouchableOpacity>
+						</View>
+						<View style={styles.container12}>
+							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('informatique')} >
+								<Image source={require('../../assets/Images/map.png')} style = {styles.ImageView1} />
+								<Text style={styles.text }>Adresse </Text>
+							</TouchableOpacity>
+						</View>
+					</View>
 					</View>
 					<View style={styles.container2}>
-						<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('dev')} >
+						<View style={styles.container21}>
+							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('dev')} >
 
-							<Image source={require('../../assets/Images/msg.png')} style = {styles.ImageView1} />
-							<Text>Boite de message</Text>
-						</TouchableOpacity>
-						<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communication')} >
+								<Image source={require('../../assets/Images/camera.png')} style = {styles.ImageView1} />
+								<Text style={styles.text }>Photo de profil</Text>
+							</TouchableOpacity>
+						</View>
+						<View style={styles.container22}>
+							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communication')} >
 
-							<Image source={require('../../assets/Images/mpd.png')} style = {styles.ImageView1} />
-							<Text>Mot de passe</Text>
-						</TouchableOpacity>
+								<Image source={require('../../assets/Images/diplome.png')} style = {styles.ImageView1} />
+								<Text style={styles.text }>Diplome</Text>
+							</TouchableOpacity>
+						</View>
+					</View>
+					<View style={styles.container3}>
+						<View style={styles.container31}>
+							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('dev')} >
+
+								<Image source={require('../../assets/Images/identite.png')} style = {styles.ImageView1} />
+								<Text style={styles.text }>Identité</Text>
+							</TouchableOpacity>
+						</View>
+						<View style={styles.container32}>
+							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communication')} >
+
+								<Image source={require('../../assets/Images/mpd.png')} style = {styles.ImageView1} />
+								<Text style={styles.text }>Mot de passe</Text>
+							</TouchableOpacity>
+						</View>
 					</View>
 				</View>
-
-
-			</View>
+				</View>
 		);
 	}
 
@@ -58,45 +75,90 @@ export default class Profile extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#F5F1F1',
 	},
 	container1: {
-		flexDirection: 'row'
+		flexDirection: 'row',
+		padding: 10,
+
+	},
+	container11: {
+		backgroundColor: '#fff',
+		width : '40%',
+		borderColor : '#F5F1F1',
+		borderWidth:5,
+		borderRadius:35	,
+	},
+	container12: {
+		backgroundColor: '#fff',
+		width : '43%',
+		borderColor : '#F5F1F1',
+		borderWidth:5,
+		borderRadius:35	,
 
 	},
 	container2 : {
-		flexDirection: 'row'
+		flexDirection: 'row',
+		padding: 10,
+		marginLeft: 20,
 	},
-	input:{
-		width : 340,
-		height : 50 ,
-		padding : 15 ,
-		borderWidth : 7,
+	container21: {
+		backgroundColor: '#fff',
+		width : '45%',
 		borderColor : '#F5F1F1',
-		borderRadius:5,
-		marginVertical : 40 ,
-		marginLeft : 40 ,
+		borderWidth:5,
+		borderRadius:35	,
+
+	},
+	container22: {
+		backgroundColor: '#fff',
+		width : '45%',
+		borderColor : '#F5F1F1',
+		borderWidth:5,
+		borderRadius:35	,
+
+	},
+	container3 : {
+		flexDirection: 'row',
+		padding: 10,
+		marginLeft: 20,
+	},
+	container31: {
+		backgroundColor: '#fff',
+		width : '45%',
+		borderColor : '#F5F1F1',
+		borderWidth:5,
+		borderRadius:35	,
+
+	},
+	container32: {
+		backgroundColor: '#fff',
+		width : '45%',
+		borderColor : '#F5F1F1',
+		borderWidth:5,
+		borderRadius:35	,
+
+	},
+	container0 : {
+		flexDirection: 'column',
+
 	},
 	ImageView1: {
 		// justifyContent : 'center',
 		// alignItems : 'center',
 		width: 100,
 		height: 100,
-		marginLeft : 40 ,
 		marginVertical : 15 ,
+		marginLeft: '21%',
 
 	},
-	text1 : {
-		fontSize : 24,
-		color : '#62A7A9',
+	text : {
+		fontSize : 18,
+		color : '#AFA5A5',
 		marginBottom : 10 ,
-		marginVertical : 40 ,
-		marginLeft : 40 ,
-	},
-	text2 : {
-		fontSize : 24,
-		color : '#62A7A9',
-		marginLeft : 40 ,
+		fontWeight: 'bold',
+		textAlign : 'center',
+		width :'90%',
 	},
 	imagesView:{
 		flexDirection: 'column',
