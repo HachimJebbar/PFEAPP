@@ -28,19 +28,12 @@
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.0.0-beta.7",
-<<<<<<< HEAD
-    "react-native-vector-icons": "latest",
-    "react-native-web": "~0.11.7",
-    "react-navigation": "^4.1.1",
-    "react-navigation-drawer": "^2.3.4"
-=======
-    "react-native-star-rating": "^1.1.0",
     "react-native-vector-icons": "latest",
     "react-native-web": "~0.11.7",
     "react-navigation": "^4.1.1",
     "react-navigation-drawer": "^2.3.4",
+    "react-native-star-rating": "^1.1.0",
     "stream-chat-expo": "^0.7.2"
->>>>>>> 96c219f0299f2ae01d722d75391742604a18c3cb
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
