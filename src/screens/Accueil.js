@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import {Platform, StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity} from 'react-native';
 
 export default class Profile extends React.Component {
+    constructor(props){
+        super(props);
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -9,7 +13,7 @@ export default class Profile extends React.Component {
                 <Text style={styles.text2 }>Le Professeur Parfait </Text>
                 <Image source={require('../../assets/Images/professeur.png')} style={styles.ImageView}/>
 
-                <TouchableOpacity style={styles.ButtonStyle}>
+                <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Inscription')}>
                     <Text style={{fontSize : 18, color: 'white'}}>S'inscrire</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.ButtonStyle}>

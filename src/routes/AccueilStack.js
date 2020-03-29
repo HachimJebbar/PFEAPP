@@ -3,13 +3,15 @@ import Header from "../shared/header";
 import React from "react";
 import Inscription from "../screens/Inscription";
 import HeaderNone from "../shared/headerNone";
+import {createStackNavigator} from "react-navigation-stack";
+
 
 const screens = {
     Accueil:{
         screen: Accueil,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header navigation={navigation} title=''/>,
+                headerTitle: () => <Header navigation={navigation} title='ACCUEIL'/>,
             }
         }
     },
@@ -21,4 +23,7 @@ const screens = {
             }
         }
     },
-}
+};
+const AccueilStack = createStackNavigator(screens);
+export default AccueilStack;
+

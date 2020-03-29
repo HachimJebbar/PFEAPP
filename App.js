@@ -1,6 +1,5 @@
 import React from 'react';
-import Home from './src/screens/Home';
-import Navigator from './src/routes/drawer'
+import Navigator from './src/screens/Login'
 export default function App() {
   return (
       <Navigator/>

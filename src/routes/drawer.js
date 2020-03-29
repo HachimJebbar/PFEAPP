@@ -47,6 +47,7 @@ const RootDrawerNavigator = createDrawerNavigator({
             </Content>
         </Container>
     ),
+
     drawerOpenRoute: 'DrawerOpen',
     drawerCloseRoute: 'DrawerClose',
     drawerToggleRoute: 'DrawerToggle',
