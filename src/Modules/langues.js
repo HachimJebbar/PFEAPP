@@ -13,7 +13,7 @@ export default class langues extends React.Component {
     render(){
         return (
             <View style={styles.container}>
-                <Text>Liste des matières populaires : </Text>
+                <Text style={styles.text1 }>Liste des matières populaires : </Text>
 
 
                 <TouchableOpacity activeOpacity = { .5 } onPress={ this.callFun }>
@@ -38,7 +38,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+    },
+    text1 : {
+        fontSize : 24,
+        color : '#62A7A9',
+        marginBottom : 10 ,
+        marginVertical : 40 ,
+        marginLeft : 40 ,
+        fontWeight: 'bold',
     },
 });

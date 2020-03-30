@@ -82,9 +82,10 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         width:250,
         height:45,
-        marginBottom:20,
+        marginBottom:30,
         flexDirection: 'row',
-        alignItems:'center'
+        alignItems:'center',
+
     },
     inputs:{
         width : 320,
@@ -110,9 +111,9 @@ const styles = StyleSheet.create({
         borderRadius:30,
     },
     signupButton: {
-        backgroundColor: "#E9967A",
-        marginLeft : 55 ,
-        width : 300,
+        backgroundColor: "#62A7A9",
+        marginLeft : '14%' ,
+        width : 280,
     },
     signUpText: {
         color: 'white',
@@ -127,11 +128,11 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#62A7A9',
-        fontSize: 30,
+        fontSize: 40,
         fontWeight: 'bold',
-        marginBottom : 20 ,
-        marginVertical : 40 ,
-        marginLeft : 90 ,
+        marginBottom : 50 ,
+        marginVertical : 160 ,
+        marginLeft : '25%' ,
 
     },
     container2 : {

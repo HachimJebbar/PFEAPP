@@ -29,26 +29,32 @@ export default class Home extends React.Component {
 
                 <View style={styles.imagesView}>
                     <View style={styles.container1}>
+                        <View style={styles.container11}>
                         <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} >
-                            <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView1} />
+                            <Image source={require('../../assets/Images/communication.png')} style = {styles.ImageView1} />
+                            <Text style={styles.text5 }>Communication</Text>
                         </TouchableOpacity>
+                        </View>
+                        <View style={styles.container12}>
                         <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('informatique')} >
-
-                            <Image source={require('../../assets/Images/informatique.png')} style = {styles.ImageView1} />
-
+                            <Image source={require('../../assets/Images/informatique.png')} style = {styles.ImageView2} />
+                            <Text style={styles.text5 }>Informatique</Text>
                         </TouchableOpacity>
+                        </View>
                     </View>
                     <View style={styles.container2}>
+                        <View style={styles.container21}>
                         <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('dev')} >
-
-                            <Image source={require('../../assets/Images/dev.jpg')} style = {styles.ImageView1} />
-
+                            <Image source={require('../../assets/Images/dev.png')} style = {styles.ImageView3} />
+                            <Text style={styles.text5 }>Developpement</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communication')} >
-
-                            <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView1} />
-
+                        </View>
+                        <View style={styles.container22}>
+                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('langues')} >
+                            <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView4} />
+                            <Text style={styles.text5 }>Langue</Text>
                         </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
 
@@ -66,11 +72,33 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     container1: {
-        flexDirection: 'row'
-
+        flexDirection: 'row',
+        width : '100%',
+        height : '20%',
+    },
+    container11: {
+        width : '40%',
+        height : '100%',
+    },
+    container12: {
+        width : '40%',
+        height : '100%',
+        marginLeft: '10%',
     },
     container2 : {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        width : '100%',
+        height : '20%',
+    },
+    container21: {
+        width : '40%',
+        height : '100%',
+
+    },
+    container22: {
+        width : '40%',
+        height : '100%',
+        marginLeft: '10%',
     },
     input:{
         width : 340,
@@ -83,13 +111,26 @@ const styles = StyleSheet.create({
         marginLeft : 40 ,
     },
     ImageView1: {
-        // justifyContent : 'center',
-        // alignItems : 'center',
-        width: 100,
-        height: 100,
-        marginLeft : 40 ,
-        marginVertical : 15 ,
-
+        width: '75%',
+        height: '100%',
+        marginLeft : '13%' ,
+    },
+    ImageView2: {
+        width: '75%',
+        height: '100%',
+        marginLeft : 20 ,
+    },
+    ImageView3: {
+        width: '75%',
+        height: '60%',
+        marginLeft : '13%' ,
+        marginTop : '70%',
+    },
+    ImageView4: {
+        width: '75%',
+        height: '60%',
+        marginLeft : 20 ,
+        marginTop : '70%',
     },
     text1 : {
         fontSize : 24,
@@ -97,14 +138,26 @@ const styles = StyleSheet.create({
         marginBottom : 10 ,
         marginVertical : 40 ,
         marginLeft : 40 ,
+        fontWeight: 'bold',
     },
     text2 : {
         fontSize : 24,
         color : '#62A7A9',
         marginLeft : 40 ,
+        fontWeight: 'bold',
+
     },
     imagesView:{
         flexDirection: 'column',
-        alignItems: 'center',
-    }
+        marginLeft : '10%',
+    },
+    text5 : {
+        fontSize : 20,
+        color : '#fff',
+        backgroundColor:'#E7DEDE',
+        width:'100%',
+        marginVertical:5,
+        fontWeight: 'bold',
+        height:30,
+    },
 });

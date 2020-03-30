@@ -57,15 +57,19 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     text1 : {
-        fontSize : 24,
+        fontSize : 30,
         color : '#62A7A9',
         marginBottom : 0 ,
-        marginVertical : 40 ,
-        marginLeft : 90 ,
+        marginVertical : 120 ,
+        marginLeft : '15%' ,
+        fontWeight: 'bold',
+
     },
     text2 : {
-        fontSize : 24,
+        fontSize : 30,
         color : '#62A7A9',
-        marginLeft : 90 ,
+        marginLeft : '15%' ,
+        fontWeight: 'bold',
+
     }
 });
