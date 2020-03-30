@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {View, TextInput, Text, CheckBox, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, TextInput, Text, CheckBox, TouchableOpacity, StyleSheet, Alert} from 'react-native';
+import {db} from "../FireBase/FireBase";
 
 export default class Contact extends Component{
 
@@ -7,6 +8,16 @@ export default class Contact extends Component{
         super(props);
         const {state} = props.navigation;
     }
+    state = {
+        description1: this.props.navigation.getParam('data1'),
+        description2: this.props.navigation.getParam('data2'),
+        langue: this.props.navigation.getParam('data3'),
+        numero: "",
+        adresse: "",
+        domicile: false,
+        eleve: false,
+        webcam: false
+    };
 
     render() {
         return (
@@ -15,34 +26,39 @@ export default class Contact extends Component{
                 <Text style={styles.text1 }> Votre numéro de téléphone</Text>
                 <TextInput style={styles.input}
                     placeholder="Numéro de téléphone"
+                           onChangeText={text => this.setState({numero: text})}
                 />
                 </View>
                 <Text style={styles.text1 }> Votre adresse</Text>
                 <TextInput style={styles.input}
                     placeholder="Adresse"
+                           onChangeText={text => this.setState({adresse: text})}
                 />
                 <Text style={styles.text1 }> Où se déroule le cours ?</Text>
                 <View style={styles.container2 }>
                     <View style={styles.container21 }>
                         <CheckBox style={styles.Checkbox }
-
+                                  isChecked={this.state.domicile}
+                                  onClick={() => this.setState({domicile: !this.state.domicile})}
                         />
                     <Text style={styles.text2 }> Cours à domicile</Text>
                     </View>
                     <View style={styles.container22 }>
                         <CheckBox style={styles.Checkbox }
-
+                                  isChecked={this.state.eleve}
+                                  onClick={() => this.setState({eleve: !this.state.eleve})}
                         />
                     <Text style={styles.text2 }> Cours chez l'éléve</Text>
                     </View>
                     <View style={styles.container23 }>
                         <CheckBox style={styles.Checkbox }
-
+                                  isChecked={this.state.webcam}
+                                  onClick={() => this.setState({webcam: !this.state.webcam})}
                         />
                     <Text style={styles.text2}> Cours par webcam</Text>
                     </View>
                 </View>
-                <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('pdp')} >
+                <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('pdp') } >
                     <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Continuer</Text>
                 </TouchableOpacity>
             </View>

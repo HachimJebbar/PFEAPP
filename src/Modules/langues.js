@@ -16,17 +16,16 @@ export default class langues extends React.Component {
                 <Text style={styles.text1 }>Liste des matières populaires : </Text>
 
 
-                <TouchableOpacity activeOpacity = { .5 } onPress={ this.callFun }>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Anglais'})}>
                     <Text>Anglais</Text>
-                    <Text>Français</Text>
-                    <Text>Allemand</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Espagnole'})}>
                     <Text>Espagnole</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Arabe'})}>
                     <Text>Arabe</Text>
+                </TouchableOpacity>
 
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description')}>
-                    <Text>Continuer</Text>
-                </TouchableOpacity>
 
             </View>
         );
