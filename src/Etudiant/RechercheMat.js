@@ -29,8 +29,8 @@ export default class RecherchePr extends React.Component {
 
                 <View style={styles.imagesView}>
                     <View style={styles.container1}>
-                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Prerequis')} >
-                           <Text>Confirmer</Text>
+                        <TouchableOpacity style={styles.ButtonStyle}  activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Prerequis')} >
+                           <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Confirmer</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -89,5 +89,18 @@ const styles = StyleSheet.create({
     imagesView:{
         flexDirection: 'column',
         alignItems: 'center',
-    }
+    },
+    ButtonStyle:{
+        backgroundColor: '#fff',
+        borderColor : '#828788',
+        borderWidth:2,
+        borderRadius:10,
+        height : 50,
+        width : 250,
+        marginLeft : '5%' ,
+        paddingLeft : 15,
+        paddingTop : 12,
+        marginBottom: 10,
+        alignItems : 'center',
+    },
 });

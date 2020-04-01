@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 export default class langues extends React.Component {
     constructor(props){
@@ -14,19 +14,32 @@ export default class langues extends React.Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.text1 }>Liste des matières populaires : </Text>
-
-
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Anglais'})}>
-                    <Text>Anglais</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Espagnole'})}>
-                    <Text>Espagnole</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Arabe'})}>
-                    <Text>Arabe</Text>
-                </TouchableOpacity>
-
-
+                <ScrollView>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Anglais'})}>
+                        <Text style={styles.text5 }>Anglais</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Allemand'})}>
+                        <Text style={styles.text5 }>Allemand</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Espagnole'})}>
+                        <Text style={styles.text5 }>Espagnole</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Arabe'})}>
+                        <Text style={styles.text5 }>Arabe</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Français'})}>
+                        <Text style={styles.text5 }>Français</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Japonnais'})}>
+                        <Text style={styles.text5 }>Japonnais</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Italien'})}>
+                        <Text style={styles.text5 }>Italien</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Chinois'})}>
+                        <Text style={styles.text5 }>Chinois</Text>
+                    </TouchableOpacity>
+                </ScrollView>
             </View>
         );
     }
@@ -42,8 +55,19 @@ const styles = StyleSheet.create({
         fontSize : 24,
         color : '#62A7A9',
         marginBottom : 10 ,
-        marginVertical : 40 ,
+        marginVertical : 50 ,
         marginLeft : 40 ,
         fontWeight: 'bold',
+    },
+    text5 : {
+        fontSize : 20,
+        color : '#fff',
+        backgroundColor:'#E7DEDE',
+        width:'80%',
+        marginVertical:5,
+        fontWeight: 'bold',
+        height:30,
+        marginLeft: '10%',
+        textAlign : 'center',
     },
 });

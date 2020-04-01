@@ -3,12 +3,11 @@ import Home from '../screens/Home'
 import ReviewDetails from '../screens/reviewDetails'
 import Header from "../shared/header";
 import HeaderNone from "../shared/headerNone";
-import Test from "../screens/Test"
 import React from 'react';
 import Description from "../screens/Description";
 import communication from "../Modules/communication";
 import dev from "../Modules/dev";
-import informatique from "../Modules/informatique";
+import musique from "../Modules/musique";
 import langues from "../Modules/langues";
 import Contact from "../screens/Contact";
 import pdp from "../screens/pdp";
@@ -28,12 +27,6 @@ const screens = {
       return {
         headerTitle: () => <HeaderNone navigation={navigation} title='Description'/>,
       }
-    }
-  },
-  Test: {
-    screen: Test,
-    navigationOptions: {
-      title: 'test',
     }
   },
     ReviewDetails: {
@@ -64,15 +57,15 @@ const screens = {
     screen: communication,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: () => <HeaderNone navigation={navigation} title='communication'/>,
+        headerTitle: () => <HeaderNone navigation={navigation} title='Communication'/>,
       }
     }
   },
- informatique: {
-    screen: informatique,
+ musique: {
+    screen: musique,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: () => <HeaderNone navigation={navigation} title='informatique'/>,
+        headerTitle: () => <HeaderNone navigation={navigation} title='Musique'/>,
       }
     }
   },
@@ -80,7 +73,7 @@ const screens = {
     screen: langues,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: () => <HeaderNone navigation={navigation} title='langues'/>,
+        headerTitle: () => <HeaderNone navigation={navigation} title='Langues'/>,
       }
     }
   },
@@ -88,7 +81,7 @@ const screens = {
     screen: dev,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: () => <HeaderNone navigation={navigation} title='dev'/>,
+        headerTitle: () => <HeaderNone navigation={navigation} title='Developpement'/>,
       }
     }
   },

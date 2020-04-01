@@ -30,15 +30,15 @@ export default class Home extends React.Component {
                 <View style={styles.imagesView}>
                     <View style={styles.container1}>
                         <View style={styles.container11}>
-                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} >
+                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communication')} >
                             <Image source={require('../../assets/Images/communication.png')} style = {styles.ImageView1} />
                             <Text style={styles.text5 }>Communication</Text>
                         </TouchableOpacity>
                         </View>
                         <View style={styles.container12}>
-                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('informatique')} >
-                            <Image source={require('../../assets/Images/informatique.png')} style = {styles.ImageView2} />
-                            <Text style={styles.text5 }>Informatique</Text>
+                        <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('musique')} >
+                            <Image source={require('../../assets/Images/music.png')} style = {styles.ImageView2} />
+                            <Text style={styles.text5 }>Musique</Text>
                         </TouchableOpacity>
                         </View>
                     </View>
@@ -159,5 +159,6 @@ const styles = StyleSheet.create({
         marginVertical:5,
         fontWeight: 'bold',
         height:30,
+        textAlign : 'center',
     },
 });
