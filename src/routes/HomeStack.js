@@ -15,7 +15,7 @@ const screens = {
 
   Home:{
       screen: Home,
-    navigationOptions: ({ navigation }) => {
+        navigationOptions: ({ navigation }) => {
         return {
         headerTitle: () => <Header navigation={navigation} title='Home'/>,
         }

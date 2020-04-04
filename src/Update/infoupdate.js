@@ -12,24 +12,17 @@ export default class Contact extends Component{
         return (
             <View style={styles.container }>
                 <View style={styles.container1 }>
-                    <Text style={styles.text1 }> Votre numéro de téléphone</Text>
-                    <TextInput style={styles.input}
-                               placeholder="Téléphone"
-                    />
+                    <Text style={styles.text1 }>Vos informations générales</Text>
+                    <TextInput style={styles.input}  placeholder="Nom from database" />
+                    <TextInput style={styles.input}  placeholder="Prénom from database" />
+                    <TextInput style={styles.input}  placeholder="Sexe from database" />
+                    <TextInput style={styles.input}  placeholder="Gmail from database" />
+                    <TextInput style={styles.input}  placeholder="Télephone from database" />
+                    <TextInput style={styles.input}  placeholder="Skype from database" />
+                    <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('pdp')} >
+                        <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Valider</Text>
+                    </TouchableOpacity>
                 </View>
-                <Text style={styles.text1 }> Votre adresse</Text>
-                <TextInput style={styles.input}
-                           placeholder="Adresse"
-                />
-                <Text style={styles.text1 }> Votre adresse</Text>
-                <TextInput style={styles.input}
-                           placeholder="Email"
-                />
-
-
-                <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('pdp')} >
-                    <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Confirmer</Text>
-                </TouchableOpacity>
             </View>
         );
     }
@@ -42,26 +35,11 @@ const styles = StyleSheet.create({
     container1: {
         marginVertical: 30,
     },
-    container2: {
-        flexDirection: 'column',
-        marginLeft : 40 ,
-        marginVertical:20,
-    },
-    container21: {
-        flexDirection: 'row'
-
-    },
-    container22: {
-        flexDirection: 'row'
-    },
-    container23: {
-        flexDirection: 'row'
-    },
     input:{
-        width : 340,
-        height : 20 ,
+        width : '80%',
+        height : '10%' ,
         padding : 15 ,
-        borderWidth : 7,
+        borderWidth : 4,
         borderColor : '#F5F1F1',
         borderRadius:5,
         marginVertical : 10 ,
@@ -70,24 +48,9 @@ const styles = StyleSheet.create({
     text1 : {
         fontSize : 25,
         color : '#62A7A9',
-        marginLeft : 40 ,
         fontWeight: 'bold',
-    },
-    text2 : {
-        fontSize : 25,
-        color : '#fff',
-        backgroundColor:'#E7DEDE',
-        width:270,
-        marginVertical:5,
-        fontWeight: 'bold',
-        height:40,
-    },
-    Checkbox : {
-        color : '#fff',
-        backgroundColor:'#E7DEDE',
-        marginVertical:5,
-        width:50,
-        height:40,
+        marginVertical : '5%',
+        textAlign : 'center',
     },
     ButtonStyle:{
         backgroundColor: '#fff',

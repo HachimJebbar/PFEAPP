@@ -43,10 +43,31 @@ export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component
                                 </View>
                             </View>
                         </View>
+                        <View style={styles.container1 }>
+                            <View style={styles.container2 }>
+                                <View style={styles.container21 }>
+                                    <View style={styles.container212 }>
+                                        <Image style={styles.ImageView} source={{uri: "https://reactnative.dev/img/tiny_logo.png"}} />
+                                        <Text style={styles.text3 }multine>100DH/H Matiere</Text>
+                                    </View>
+                                    <View style={styles.container211 }>
+                                        <View style={{flexDirection:'row'} }>
+                                            <CheckBox style={{ iconSize:'large'}}
+
+                                            />
+                                            <Text style={styles.text2 } >Publier</Text>
+                                        </View>
+                                        <TouchableHighlight style={[styles.buttonContainer, styles.modifier]} onPress={() => this.onClickListener('sign_up')}>
+                                            <Text style={styles.text5}>Modifier</Text>
+                                        </TouchableHighlight>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
                     </ScrollView>
-
-
-
+                    <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('') } >
+                        <Text style={{fontWeight: 'bold',fontSize : 50,color: '#fff' }}>+</Text>
+                    </TouchableOpacity>
 
                 </ScrollView>
             </View>
@@ -60,9 +81,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         backgroundColor:  '#fff',
+        position : 'relative'
     },
     container1: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        height : '50%',
     },
     container2: {
         flexDirection: 'column',
@@ -74,9 +97,9 @@ const styles = StyleSheet.create({
     },
     container21: {
         flexDirection: 'row',
-        marginVertical : 30 ,
+        marginVertical : '5%' ,
         width : '70%',
-        height : 180 ,
+        height : '100%' ,
         borderRadius:50,
     },
     container211: {
@@ -128,5 +151,18 @@ const styles = StyleSheet.create({
         color : '#AFA5A5',
         marginVertical:3,
         fontWeight: 'bold',
+    },
+    ButtonStyle:{
+        backgroundColor: '#E4D8D8',
+        borderColor : '#E4D8D8',
+        borderWidth:2,
+        borderRadius:200,
+        height : '13%',
+        width : '18%',
+        marginLeft : '76%' ,
+        marginTop : '5%',
+        textAlign : 'center',
+        alignItems : 'center',
+
     },
 });

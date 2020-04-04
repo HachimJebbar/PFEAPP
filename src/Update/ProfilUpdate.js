@@ -40,11 +40,8 @@ export default class ProfilUp extends Component{
     };
     render() {
         return (
-            <ScrollView>
             <View style={styles.container}>
-            <View style={{flexDirection: 'column', marginTop: 60,}}>
                 <Text style={styles.text1 }> Votre Profil !!</Text>
-
                 <View style={styles.documents}>
                     <TextInput
                         style={styles.imageInput}
@@ -69,50 +66,47 @@ export default class ProfilUp extends Component{
                             this.state.images.map((image) => {
                                 return (
                                     <View style={styles.documentsAdded} key={image.uri}>
-                                        <Text>{image.name}</Text>
-
-                                        <Icon onPress={() => this.handleDelete(image.uri)} name="trash" size={18} color="#000" style={{opacity: 0.4}} />
+                                        <View style={styles.container21}>
+                                        <Text style={styles.NomImage}>{image.name}</Text>
+                                        <Icon  onPress={() => this.handleDelete(image.uri)} name="trash" size={24} color="#fff" style={styles.icon} />
+                                        </View>
                                         {image && (
                                             <Image
                                                 source={{ uri: image.uri }}
-                                                style={{ width: 300, height: 300 }}
+                                                style={{borderRadius:500,flexDirection: 'row',width: '45%', height: '58%',marginLeft:'33%',}}
                                             />
                                         )}
                                     </View>
-
-
                                 )
                             })
                     }
                 </View>
-
-
-                <Text> Adresse : </Text>
-                <TextInput placeholder={"Les infos mn dataBase"}></TextInput>
-                <Text> Téléphone : </Text>
-                <TextInput placeholder={"Les infos mn dataBase"}></TextInput>
-                <Text> E-mail : </Text>
-                <TextInput placeholder={"Les infos mn dataBase"}></TextInput>
-
-
-                <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('pdp')} >
-                    <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Confirmer </Text>
-                </TouchableOpacity>
-
-
-
+                <View style={styles.container3}>
+                    <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('pdp')} >
+                        <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Confirmer </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            </View>
-            </ScrollView>
-
-
-
-
         );}}
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+    },
+    container21: {
+        flexDirection: 'row',
+        alignSelf: 'center',
+    },
+    container22: {
+        flexDirection: 'row',
+    },
+    container3: {
+        width : '100%',
+        height : '100%',
+        backgroundColor: '#fff',
+        position :'absolute',
+        top: 500 ,
     },
     input: {
         height: 40,
@@ -130,7 +124,7 @@ const styles = StyleSheet.create({
         borderColor: '#a9a9a1',
         borderBottomWidth: 1,
         opacity: 0.5,
-        width: "80%",
+        width: "30%",
         alignSelf: 'center',
         marginBottom: 8
     },
@@ -144,6 +138,7 @@ const styles = StyleSheet.create({
         marginLeft : 90 ,
         fontWeight: 'bold',
         marginVertical:30,
+        marginTop:70,
     },
     stadiumAddress: {
         flexDirection: 'row',
@@ -192,23 +187,10 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontWeight: 'bold',
     },
-    textAreaContainer: {
-        padding: 5,
-        marginTop: 20
-    },
-    textArea: {
-        borderColor: "#333333",
-        borderWidth: 1,
-        height: 100,
-        justifyContent: "flex-start",
-        opacity: 0.5
-    },
     documentsAdded: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flexDirection: 'column',
         width: '92%',
         marginTop: 8,
-
     },
     ButtonStyle:{
         backgroundColor: '#fff',
@@ -221,7 +203,27 @@ const styles = StyleSheet.create({
         paddingTop : 12,
         marginBottom: 10,
         alignItems : 'center',
-        marginVertical: 70,
+
+    },
+    NomImage :{
+        flexDirection: 'row',
+        fontSize : 25,
+        color : '#fff',
+        backgroundColor:'#E7DEDE',
+        width:180,
+        marginVertical:5,
+        fontWeight: 'bold',
+        height:40,
+        justifyContent: 'center',
+        textAlign: "center",
+        marginLeft : '10%',
+    },
+    icon :{
+        backgroundColor:'#E7DEDE',
+        width:45,
+        height : 40,
+        marginTop:5,
+        padding : 6,
     },
 });
 

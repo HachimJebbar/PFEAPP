@@ -91,16 +91,10 @@ export default class Pdp extends Component{
                                         )}
                                         </View>
                                     </View>
-
-
                                 )
                             })
                     }
                 </View>
-
-
-
-
                 <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Login')} >
                     <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Terminer mon annonce</Text>
                 </TouchableOpacity>

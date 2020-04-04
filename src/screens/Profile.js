@@ -18,14 +18,14 @@ export default class Profile extends React.Component {
 				<View style={styles.imagesView}>
 					<View style={styles.container1}>
 						<View style={styles.container11}>
-						<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('Test')} >
+						<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('infoupdate')} >
 							<Image source={require('../../assets/Images/info_general.png')} style = {styles.ImageView1} />
 							<Text style={styles.text }>Informations </Text>
 
 						</TouchableOpacity>
 						</View>
 						<View style={styles.container12}>
-							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('informatique')} >
+							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('adresseupdate')} >
 								<Image source={require('../../assets/Images/map.png')} style = {styles.ImageView1} />
 								<Text style={styles.text }>Adresse </Text>
 							</TouchableOpacity>
@@ -34,14 +34,13 @@ export default class Profile extends React.Component {
 					</View>
 					<View style={styles.container2}>
 						<View style={styles.container21}>
-							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('dev')} >
-
+							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('ProfilUpdate')} >
 								<Image source={require('../../assets/Images/camera.png')} style = {styles.ImageView1} />
 								<Text style={styles.text }>Photo de profil</Text>
 							</TouchableOpacity>
 						</View>
 						<View style={styles.container22}>
-							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communication')} >
+							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('diplome')} >
 
 								<Image source={require('../../assets/Images/diplome.png')} style = {styles.ImageView1} />
 								<Text style={styles.text }>Diplome</Text>
@@ -50,14 +49,14 @@ export default class Profile extends React.Component {
 					</View>
 					<View style={styles.container3}>
 						<View style={styles.container31}>
-							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('dev')} >
+							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('identite')} >
 
 								<Image source={require('../../assets/Images/identite.png')} style = {styles.ImageView1} />
 								<Text style={styles.text }>Identité</Text>
 							</TouchableOpacity>
 						</View>
 						<View style={styles.container32}>
-							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communication')} >
+							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('mdpupdate')} >
 
 								<Image source={require('../../assets/Images/mpd.png')} style = {styles.ImageView1} />
 								<Text style={styles.text }>Mot de passe</Text>
@@ -80,7 +79,6 @@ const styles = StyleSheet.create({
 	container1: {
 		flexDirection: 'row',
 		padding: 10,
-
 	},
 	container11: {
 		backgroundColor: '#fff',

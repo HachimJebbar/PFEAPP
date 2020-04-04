@@ -6,7 +6,7 @@ import {
     ActivityIndicator,
     Text,
     View,
-    Switch,
+    Switch, StyleSheet,
 } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -23,8 +23,8 @@ const FieldWrapper = ({ children, label, formikProps, formikKey }) => (
 
 const StyledInput = ({ label, formikProps, formikKey, ...rest }) => {
     const inputStyles = {
-        borderWidth: 1,
-        borderColor: 'black',
+        borderWidth: 3,
+        borderColor: '#F5F1F1',
         padding: 10,
         marginBottom: 3,
     };
@@ -80,6 +80,7 @@ const validationSchema = yup.object().shape({
 });
 
 export default () => (
+    <View style={styles.container }>
     <SafeAreaView style={{ marginTop: 90 }}>
         <Formik
             initialValues={{
@@ -130,10 +131,74 @@ export default () => (
                     {formikProps.isSubmitting ? (
                         <ActivityIndicator />
                     ) : (
-                        <Button title="Submit" onPress={formikProps.handleSubmit} />
+                        <Button style={styles.ButtonStyle} title="Submit" onPress={formikProps.handleSubmit} />
                     )}
                 </React.Fragment>
             )}
         </Formik>
     </SafeAreaView>
+    </View>
 );
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+    container1: {
+        marginVertical: 30,
+    },
+    container2: {
+        flexDirection: 'column',
+        marginLeft : 40 ,
+        marginVertical:20,
+    },
+    container21: {
+        flexDirection: 'row'
+
+    },
+    container22: {
+        flexDirection: 'row'
+    },
+    container23: {
+        flexDirection: 'row'
+    },
+    input:{
+        width : '80%',
+        height : '10%' ,
+        padding : 15 ,
+        borderWidth : 4,
+        borderColor : '#F5F1F1',
+        borderRadius:5,
+        marginVertical : 10 ,
+        marginLeft : 40 ,
+    },
+    text1 : {
+        fontSize : 25,
+        color : '#62A7A9',
+        fontWeight: 'bold',
+        marginVertical : '5%',
+        textAlign : 'center',
+    },
+    text2 : {
+        fontSize : 25,
+        color : '#fff',
+        backgroundColor:'#E7DEDE',
+        width:270,
+        marginVertical:5,
+        fontWeight: 'bold',
+        height:40,
+    },
+    ButtonStyle:{
+        backgroundColor: '#fff',
+        borderColor : '#828788',
+        borderWidth:2,
+        borderRadius:10,
+        height : 50,
+        width : 250,
+        marginLeft : 80 ,
+        paddingLeft : 15,
+        paddingTop : 12,
+        marginBottom: 10,
+        alignItems : 'center',
+    },
+});
