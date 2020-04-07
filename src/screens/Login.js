@@ -7,8 +7,10 @@ import {
     Button,
     TouchableHighlight,
     Image,
-    Alert
+    Alert, Animated, ImageBackground
 } from 'react-native';
+import {auth, db} from "../FireBase/FireBase";
+import NavigatorUser from "../routes/drawer"
 
 export default class Login extends Component {
     state;
@@ -16,57 +18,110 @@ export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            user:{},
+            Data:{},
+            scroll: new Animated.Value(0),
             email   : '',
             password: '',
+            isLoading: true,
+            modalVisible: false,
+            error:null,
+            secureTextEntryFirst:true,
+            showFirst:'show',
         }
     }
-
-    onClickListener = (viewId) => {
-        Alert.alert("Alert", "Button pressed "+viewId);
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
     }
+    handleEmail(value){
+        this.setState({email: value})
+    };
+    handlePassword(value){
+        this.setState({password: value})
+    };
+    componentDidMount() {
+        this.getNavigator();
+    }
+    loginUser = (email, password, Change=()=>this.getNavigator()) => {
+        auth.signInWithEmailAndPassword(email, password)
+            .then(function (user) {
+                Change();
+            }).catch(error => this.setState({ error: error.message }))
+    };
+    getNavigator=  (Change=()=>this.setState({Data:'LoggedIn',isLoading: false}), Change2=()=>this.setState({Data:'NotLoggedIn',isLoading: false}),
+    )=> {
+        setTimeout(function(){
+            if (auth.currentUser === null){
+                console.log(auth.currentUser);
+                Change2();
+            }else {
+                Change();
+            }
+        }, 1000);
+
+    };
+
+
 
     render() {
-        return (
-            <View style={styles.container}>
+        const secureTextEntryFirst=()=>{
+            if (this.state.secureTextEntryFirst){
+                this.setState({secureTextEntryFirst:false, showFirst:'hide'})
+            }if (!this.state.secureTextEntryFirst){
+                this.setState({secureTextEntryFirst:true, showFirst:'show'})
+            }
+        };
+        const CloseModal =()=>{
+            this.setModalVisible(false);
+        };
 
-                <Text style={styles.text}> Connexion </Text>
+        console.disableYellowBox = true;
+
+        if (this.state.isLoading) {
+            return (
+                <ImageBackground source={require('../../assets/Images/professeur.png')} style={{flex:1}}/>
+            );
+        }
+        if (this.state.Data === 'LoggedIn'){
+            return <NavigatorUser/>
+        }else {
+            return (
+                <View style={styles.container}>
+
+                    <Text style={styles.text}> Connexion </Text>
 
 
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
-                    <TextInput style={styles.inputs}
-                               placeholder="Email"
-                               keyboardType="email-address"
-                               underlineColorAndroid='transparent'
-                               onChangeText={(email) => this.setState({email})}/>
-                </View>
-
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
-                    <TextInput style={styles.inputs}
-                               placeholder="Entrer le mot de passe"
-                               secureTextEntry={true}
-                               underlineColorAndroid='transparent'
-                               onChangeText={(password) => this.setState({password})}/>
-                </View>
-
-                <View style={styles.container0}>
-                    <View View style={styles.container1}>
-                        <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.onClickListener('sign_up')}>
-                            <Text style={styles.signUpText}>Connexion</Text>
-                        </TouchableHighlight>
+                    <View style={styles.inputContainer}>
+                        <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+                        <TextInput style={styles.inputs}
+                                   placeholder="Email"
+                                   keyboardType="email-address"
+                                   underlineColorAndroid='transparent'
+                                   onChangeText={(value) => { this.handleEmail(value)}}
+                                  />
                     </View>
-                    <View style={styles.container2}>
-                        <TouchableHighlight style={[styles.buttonContainer, styles.signupFButton]} onPress={() => this.onClickListener('sign_up')}>
-                            <Text style={styles.signUpText}>Facebook</Text>
-                        </TouchableHighlight>
-                        <TouchableHighlight style={[styles.buttonContainer, styles.signupGButton]} onPress={() => this.onClickListener('sign_up')}>
-                            <Text style={styles.signUpText}>Gmail</Text>
-                        </TouchableHighlight>
+
+                    <View style={styles.inputContainer}>
+                        <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
+                        <TextInput style={styles.inputs}
+                                   placeholder="Entrer le mot de passe"
+                                   secureTextEntry={true}
+                                   underlineColorAndroid='transparent'
+                                   onChangeText={(value) => { this.handlePassword(value)}}/>
+                    </View>
+
+                    <View style={styles.container0}>
+                        <View View style={styles.container1}>
+                            <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.loginUser(this.state.email, this.state.password)}>
+                                <Text style={styles.signUpText}>Connexion</Text>
+                            </TouchableHighlight>
+                        </View>
+
                     </View>
                 </View>
-            </View>
-        );
+            );
+        }
+
     }
 }
 

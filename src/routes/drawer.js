@@ -4,7 +4,6 @@ import RechercheStack from "./RechercheStack";
 import AnnoncesStack from "./AnnoncesStack";
 import HomeStack from "./HomeStack";
 import ProfileStack from "./ProfileStack";
-import ScrollView from "react-native-web/dist/exports/ScrollView";
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image} from 'react-native';
 import {Container, Header, Body, Content} from 'native-base';
 import React from "react";
@@ -29,6 +28,7 @@ const RootDrawerNavigator = createDrawerNavigator({
     Contact:{
         screen:AnnoncesStack,
     },
+
     Deconnexion:{
         screen:AnnoncesStack
     },
