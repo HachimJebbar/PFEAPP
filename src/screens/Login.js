@@ -10,7 +10,8 @@ import {
     Alert, Animated, ImageBackground
 } from 'react-native';
 import {auth, db} from "../FireBase/FireBase";
-import NavigatorUser from "../routes/drawer"
+import NavigatorUser from "../routes/drawer";
+
 
 export default class Login extends Component {
     state;
@@ -108,16 +109,23 @@ export default class Login extends Component {
                                    secureTextEntry={true}
                                    underlineColorAndroid='transparent'
                                    onChangeText={(value) => { this.handlePassword(value)}}/>
+                        <Text onPress={()=>secureTextEntryFirst()} style={styles.PasswordIcon}>{this.state.showFirst}</Text>
+
                     </View>
 
                     <View style={styles.container0}>
                         <View View style={styles.container1}>
                             <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.loginUser(this.state.email, this.state.password)}>
                                 <Text style={styles.signUpText}>Connexion</Text>
+
                             </TouchableHighlight>
+
                         </View>
 
                     </View>
+                    <Text  onPress={() => {
+                        this.setModalVisible(true);
+                    }}>Register here</Text>
                 </View>
             );
         }

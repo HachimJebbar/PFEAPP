@@ -4,7 +4,7 @@ import {StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Image, TextI
 
 
 
-export default class Home extends React.Component {
+export default class HomeProf extends React.Component {
 
     constructor(props){
         super(props);
@@ -17,10 +17,14 @@ export default class Home extends React.Component {
                 <View style={styles.container0}>
                     <TouchableOpacity >
                         <Text style={styles.text1 }>Quelle matière  </Text>
-                        <Text style={styles.text2 }>souhaitez-vous étudier ? </Text>
+                        <Text style={styles.text2 }>souhaitez-vous enseigner ? </Text>
                     </TouchableOpacity>
 
 
+
+                    <TextInput style={styles.input}
+                               placeholder="Liste des matières"
+                    />
                 </View>
 
                 <View style={styles.imagesView}>

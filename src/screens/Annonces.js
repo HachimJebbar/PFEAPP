@@ -65,7 +65,7 @@ export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component
                             </View>
                         </View>
                     </ScrollView>
-                    <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('') } >
+                    <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('HomeProf') } >
                         <Text style={{fontWeight: 'bold',fontSize : 50,color: '#fff' }}>+</Text>
                     </TouchableOpacity>
 

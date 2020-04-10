@@ -4,9 +4,12 @@ import RechercheStack from "./RechercheStack";
 import AnnoncesStack from "./AnnoncesStack";
 import HomeStack from "./HomeStack";
 import ProfileStack from "./ProfileStack";
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image} from 'react-native';
+import {StyleSheet, Text, View, FlatList, Button, TouchableOpacity, Image, Alert} from 'react-native';
 import {Container, Header, Body, Content} from 'native-base';
 import React from "react";
+import {auth} from "../FireBase/FireBase";
+import { Updates } from 'expo';
+
 
 
 const RootDrawerNavigator = createDrawerNavigator({
@@ -34,6 +37,7 @@ const RootDrawerNavigator = createDrawerNavigator({
     },
 },{
     contentComponent: (props) => (
+
         <Container>
             <Header style={{height: 200, backgroundColor: 'white'}}>
                 <Body>
@@ -44,6 +48,16 @@ const RootDrawerNavigator = createDrawerNavigator({
             </Header>
             <Content>
                 <DrawerItems {...props}/>
+                <View >
+                    <Button title="Logout" onPress={message =>{
+                        auth.signOut().then(function() {
+                            Updates.reload()
+                        }).catch(function(error) {
+                            alert('error : ', error)
+                        });
+                    }}/>
+
+                </View>
             </Content>
         </Container>
     ),

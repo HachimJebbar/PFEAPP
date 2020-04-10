@@ -14,15 +14,22 @@ import pdp from "../screens/pdp";
 import HomeProf from "../screens/HomeProf";
 const screens = {
 
-  Home:{
-      screen: Home,
+  HomeProf:{
+      screen: HomeProf,
         navigationOptions: ({ navigation }) => {
         return {
         headerTitle: () => <Header navigation={navigation} title='Home'/>,
         }
     }
   },
-
+  Description : {
+    screen: Description,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <HeaderNone navigation={navigation} title='Description'/>,
+      }
+    }
+  },
     ReviewDetails: {
       screen: ReviewDetails,
       navigationOptions: ({ navigation }) => {
