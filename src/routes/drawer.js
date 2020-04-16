@@ -1,6 +1,5 @@
 import {createDrawerNavigator, DrawerItems} from "react-navigation-drawer";
 import {createAppContainer} from "react-navigation";
-import RechercheStack from "./RechercheStack";
 import AnnoncesStack from "./AnnoncesStack";
 import HomeStack from "./HomeStack";
 import ProfileStack from "./ProfileStack";
@@ -19,9 +18,6 @@ const RootDrawerNavigator = createDrawerNavigator({
     Profile: {
         screen: ProfileStack,
     },
-    RechercheMat: {
-        screen: RechercheStack,
-    },
     Annonces: {
         screen: AnnoncesStack,
     },
@@ -30,10 +26,6 @@ const RootDrawerNavigator = createDrawerNavigator({
     },
     Contact:{
         screen:AnnoncesStack,
-    },
-
-    Deconnexion:{
-        screen:AnnoncesStack
     },
 },{
     contentComponent: (props) => (

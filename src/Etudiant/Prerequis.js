@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Image, TextInput} from 'react-native';
+import * as firebase from "firebase";
 
 
 
@@ -9,19 +10,39 @@ export default class RecherchePr extends React.Component {
     constructor(props){
         super(props);
     }
+    state  = {
+        langue: this.props.navigation.getParam('data1'),
+        data: {},
+    };
 
+    MatiereDetails = (Data, Change=()=> this.setState({data:Data})) => {
+        let Compare =this.state.langue;
+        var ref = firebase.database().ref("Matiere");
+        ref.orderByChild("Nom").equalTo(Compare).once("value",function (snapshot) {
+            snapshot.forEach(function (child) {
+                Data = child.val();
+                Change();
+            })
+        });
+    };
+    componentDidMount() {
+        this.MatiereDetails() ;
+    };
     render(){
-
+        //let Nom = this.state.data ;
+        //let Prerequis1 = this.state.data ;
+        //let Prerequis2 = this.state.data ;
+        //let Prerequis3 = this.state.data ;
         return (
             <View style={styles.container}>
                 <View style={styles.container0}>
                     <TouchableOpacity >
-                        <Text style={styles.text1 }>Matière "XXXXX"  </Text>
+                        <Text style={styles.text1 }>Matière "{this.state.data.Nom}"  </Text>
                         <Text style={styles.text2 } multine>Vous êtes en "nv scolaire" Vous devez disposer
                         des préreques suivantes pour qu'on puisse vous aidez à améliorer votre niveau :</Text>
-                        <Text style={styles.text3 }>-Prérequis numero 1  </Text>
-                        <Text style={styles.text3 }>-Prérequis numero 2 </Text>
-                        <Text style={styles.text3 }>-Prérequis numero 3 </Text>
+                        <Text style={styles.text3 }>-{this.state.data.Prerequis1}  </Text>
+                        <Text style={styles.text3 }>-{this.state.data.Prerequis2} </Text>
+                        <Text style={styles.text3 }>-{this.state.data.Prerequis3} </Text>
 
                     </TouchableOpacity>
 
