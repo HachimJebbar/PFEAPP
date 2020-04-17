@@ -17,40 +17,40 @@ export default class dev extends React.Component {
 
 
             <ScrollView>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'ALGORITHME'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'ALGORITHME'})}>
                     <Text style={styles.text5 }>ALGORITHME</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'C'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'C'})}>
                     <Text style={styles.text5 }>PROGRAMMATION C</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'JAVASCRIPT'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'JAVASCRIPT'})}>
                     <Text style={styles.text5 }>JAVASCRIPT</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'REACT_NATIVE'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'REACT_NATIVE'})}>
                     <Text style={styles.text5 }>REACT NATIVE</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'PHP'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'PHP'})}>
                     <Text style={styles.text5 }>PHP</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'LARAVEL'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'LARAVEL'})}>
                     <Text style={styles.text5 }>LARAVEL</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'MYSQL'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'MYSQL'})}>
                     <Text style={styles.text5 }>MYSQL</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'FIREBASE'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'FIREBASE'})}>
                     <Text style={styles.text5 }>FIREBASE</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'ANGULAR'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'ANGULAR'})}>
                     <Text style={styles.text5 }>ANGULAR</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'JAVA'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'JAVA'})}>
                     <Text style={styles.text5 }>JAVA</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'HTML'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'HTML'})}>
                     <Text style={styles.text5 }>HTML</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'CSS'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'CSS'})}>
                     <Text style={styles.text5 }>CSS</Text>
                 </TouchableOpacity>
             </ScrollView>

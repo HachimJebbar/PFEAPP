@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     imagesView:{
         flexDirection: 'column',
         marginLeft : '10%',
+        marginVertical : 50,
     },
     text5 : {
         fontSize : 20,

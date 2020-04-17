@@ -23,13 +23,13 @@ communication : "",
 
 
             <ScrollView>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'interpersonnelle'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'interpersonnelle'})}>
                     <Text style={styles.text5 }>Interpersonnelle </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'groupe'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'groupe'})}>
                     <Text style={styles.text5 }>En groupe</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'masse'})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'masse'})}>
                     <Text style={styles.text5 }>En masse</Text>
                 </TouchableOpacity>
             </ScrollView>

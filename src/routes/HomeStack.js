@@ -4,14 +4,12 @@ import ReviewDetails from '../screens/reviewDetails'
 import Header from "../shared/header";
 import HeaderNone from "../shared/headerNone";
 import React from 'react';
-import Description from "../screens/Description";
 import communication from "../Modules/communication";
 import dev from "../Modules/dev";
 import musique from "../Modules/musique";
 import langues from "../Modules/langues";
-import Contact from "../screens/Contact";
-import pdp from "../screens/pdp";
-import HomeProf from "../screens/HomeProf";
+import Prerequis from "../Etudiant/Prerequis";
+import RecherchePr from  "../Etudiant/RecherchePr"
 const screens = {
 
   Home:{
@@ -23,30 +21,6 @@ const screens = {
     }
   },
 
-    ReviewDetails: {
-      screen: ReviewDetails,
-      navigationOptions: ({ navigation }) => {
-        return {
-        headerTitle: () => <HeaderNone navigation={navigation} title='ReviewDetails'/>,
-        }
-    }
-    },
-  Contact: {
-    screen: Contact,
-    navigationOptions: ({ navigation }) => {
-      return {
-        headerTitle: () => <HeaderNone navigation={navigation} title='Contact'/>,
-      }
-    }
-  },
-  pdp: {
-    screen:pdp ,
-    navigationOptions: ({ navigation }) => {
-      return {
-        headerTitle: () => <HeaderNone navigation={navigation} title='Image'/>,
-      }
-    }
-  },
   communication: {
     screen: communication,
     navigationOptions: ({ navigation }) => {
@@ -79,8 +53,22 @@ const screens = {
       }
     }
   },
-
-
+  Prerequis: {
+    screen: Prerequis,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <HeaderNone navigation={navigation} title='Prerequis'/>,
+      }
+    }
+  },
+  RecherchePr: {
+    screen: RecherchePr,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <HeaderNone navigation={navigation} title='Professeur'/>,
+      }
+    }
+  },
 
    
 };
