@@ -7,12 +7,14 @@ import {
     Button,
     TouchableHighlight,
     Image,
-    Alert, Animated
+    Alert, Animated, TouchableOpacity
 } from 'react-native';
 import {auth, db} from "../FireBase/FireBase";
 import * as yup from "yup";
 import { Formik } from 'formik';
 import {ScrollView} from "react-native-web";
+import * as ImagePicker from "expo-image-picker";
+import Icon from "../../native-base-theme/components/Icon";
 
 
 export default class Inscription extends Component {
@@ -41,6 +43,12 @@ export default class Inscription extends Component {
                     uid: user.user.uid,
                     email: values.email,
                     nom_complet: '',
+                    numero: '',
+                    adresse : '',
+                    ville : '',
+                    images: [],
+                    imageName: "",
+
                 });
                 Alert.alert('Action!', 'Your account is set');
             }).catch(error => this.setState({ error: error.message }))
@@ -49,7 +57,21 @@ export default class Inscription extends Component {
         }
 
     };
+    handleDelete = imageUri => {
+        const images = this.state.images.filter(image => image.uri !== imageUri);
+        this.setState({ images: images });
+    };
 
+    onChooseImagePress = async () => {
+
+
+            let result = await ImagePicker.launchImageLibraryAsync();
+            this.state.images.push({uri: result.uri, name: this.state.imageName});
+            this.setState({imageName: ""})
+
+
+
+    };
 
 
     render() {
@@ -76,7 +98,6 @@ export default class Inscription extends Component {
             }
         };
         return (
-
             <View style={styles.container}>
 
 
@@ -86,6 +107,11 @@ export default class Inscription extends Component {
                         email: '',
                         password: '',
                         repeatpassword: '',
+                        numero:'',
+                        adresse:'',
+                        ville:'',
+                        images:'',
+                        imageName:'',
 
                     }}
                     validationSchema={Check}
@@ -157,6 +183,42 @@ export default class Inscription extends Component {
                             </View>
                             <Text
                                 style={styles.errorText}>{props.touched.repeatpassword && props.errors.repeatpassword}</Text>
+                            <View style={styles.container }>
+                                <View style={styles.container1 }>
+                                    <Text style={styles.text1 }> Votre numéro de téléphone</Text>
+                                    <TextInput style={styles.input}
+                                               onChangeText={props.handleChange('numero')}
+                                               value={props.values.nom_complet}
+                                               onBlur={props.handleBlur('numero')}
+                                               placeholder="numéro de téléphone"
+                                               underlineColorAndroid="transparent"
+                                               placeholderTextColor="#a9a9a1"
+                                               autoCapitalize="none"
+                                    />
+                                </View>
+                                <Text style={styles.text1 }> Votre adresse</Text>
+                                <TextInput style={styles.input}
+                                           onChangeText={props.handleChange('adresse')}
+                                           value={props.values.nom_complet}
+                                           onBlur={props.handleBlur('adresse')}
+                                           placeholder="Adresse"
+                                           underlineColorAndroid="transparent"
+                                           placeholderTextColor="#a9a9a1"
+                                           autoCapitalize="none"
+                                />
+                            </View>
+
+                            <View style={styles.container0}>
+                                <TextInput style={styles.input}
+                                           onChangeText={props.handleChange('ville')}
+                                           value={props.values.nom_complet}
+                                           onBlur={props.handleBlur('ville')}
+                                           placeholder="Ville"
+                                           underlineColorAndroid="transparent"
+                                           placeholderTextColor="#a9a9a1"
+                                           autoCapitalize="none"
+                                />
+                            </View>
 
                             <View style={styles.container0}>
                                 <View View style={styles.container1}>
@@ -168,6 +230,7 @@ export default class Inscription extends Component {
                             </View>
 
                         </View>
+
 
 
                     )

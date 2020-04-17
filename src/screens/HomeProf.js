@@ -10,8 +10,9 @@ export default class HomeProf extends React.Component {
         super(props);
     }
 
+
     render(){
-        let datause = 'ziad';
+
         return (
             <View style={styles.container}>
                 <View style={styles.container0}>

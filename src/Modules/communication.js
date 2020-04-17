@@ -6,6 +6,12 @@ export default class communication extends React.Component {
         super(props);
         const {state} = props.navigation;
     }
+    state =  {
+communication : "",
+
+
+};
+
     callFun = () =>
     {
         alert("Matière choisie!!!");
