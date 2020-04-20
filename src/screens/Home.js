@@ -11,7 +11,7 @@ export default class Home extends React.Component {
     }
 
     render(){
-        let datause = 'ziad';
+
         return (
             <View style={styles.container}>
                 <View style={styles.container0}>

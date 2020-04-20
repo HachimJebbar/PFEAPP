@@ -7,10 +7,11 @@ import {
   Button,
   TouchableHighlight,
   Image,
-  Alert, Animated, ImageBackground
+  Alert, Animated, ImageBackground, TouchableOpacity, Modal
 } from 'react-native';
 import {auth, db} from "./src/FireBase/FireBase";
 import NavigatorUser from "./src/routes/drawer";
+import Inscription from "./src/screens/Inscription";
 
 export default class App extends Component {
   state;
@@ -86,7 +87,15 @@ export default class App extends Component {
       return <NavigatorUser/>
     }else {
       return (
+
           <View style={styles.container}>
+            <Modal
+                animationType="slide"
+                transparent={false}
+                visible={this.state.modalVisible}
+            >
+              <Inscription CloseModal={CloseModal}/>
+            </Modal>
 
             <Text style={styles.text}> Connexion </Text>
 
@@ -116,6 +125,11 @@ export default class App extends Component {
                   <Text style={styles.signUpText}>Connexion</Text>
                 </TouchableHighlight>
               </View>
+              <TouchableOpacity  style={[styles.buttonContainer, styles.signupButton]} onPress={() => {
+                this.setModalVisible(true);
+              }}>
+                <Text>Register here</Text>
+              </TouchableOpacity>
 
             </View>
           </View>

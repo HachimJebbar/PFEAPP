@@ -7,12 +7,11 @@ import {
     Button,
     TouchableHighlight,
     Image,
-    Alert, Animated, TouchableOpacity
+    Alert, Animated, TouchableOpacity, ScrollView
 } from 'react-native';
 import {auth, db} from "../FireBase/FireBase";
 import * as yup from "yup";
 import { Formik } from 'formik';
-import {ScrollView} from "react-native-web";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "../../native-base-theme/components/Icon";
 
@@ -42,12 +41,10 @@ export default class Inscription extends Component {
                 db.ref('/users').push({
                     uid: user.user.uid,
                     email: values.email,
-                    nom_complet: '',
-                    numero: '',
-                    adresse : '',
-                    ville : '',
-                    images: [],
-                    imageName: "",
+                    nom_complet: values.nom_complet,
+                    numero: values.numero,
+                    adresse : values.adresse,
+                    ville : values.ville,
 
                 });
                 Alert.alert('Action!', 'Your account is set');
@@ -98,6 +95,8 @@ export default class Inscription extends Component {
             }
         };
         return (
+            <ScrollView>
+
             <View style={styles.container}>
 
 
@@ -183,42 +182,41 @@ export default class Inscription extends Component {
                             </View>
                             <Text
                                 style={styles.errorText}>{props.touched.repeatpassword && props.errors.repeatpassword}</Text>
-                            <View style={styles.container }>
-                                <View style={styles.container1 }>
-                                    <Text style={styles.text1 }> Votre numéro de téléphone</Text>
-                                    <TextInput style={styles.input}
-                                               onChangeText={props.handleChange('numero')}
-                                               value={props.values.nom_complet}
-                                               onBlur={props.handleBlur('numero')}
-                                               placeholder="numéro de téléphone"
-                                               underlineColorAndroid="transparent"
-                                               placeholderTextColor="#a9a9a1"
-                                               autoCapitalize="none"
-                                    />
-                                </View>
-                                <Text style={styles.text1 }> Votre adresse</Text>
-                                <TextInput style={styles.input}
+                            <View style={styles.inputContainer}>
+
+                                <TextInput style={styles.inputs}
+                                           onChangeText={props.handleChange('numero')}
+                                           value={props.values.numero}
+                                           onBlur={props.handleBlur('numero')}
+                                           placeholder="Numero"
+                                           underlineColorAndroid="transparent"
+                                           placeholderTextColor="#a9a9a1"
+                                           autoCapitalize="none"/>
+                            </View>
+                            <View style={styles.inputContainer}>
+
+                                <TextInput style={styles.inputs}
                                            onChangeText={props.handleChange('adresse')}
-                                           value={props.values.nom_complet}
+                                           value={props.values.adresse}
                                            onBlur={props.handleBlur('adresse')}
                                            placeholder="Adresse"
                                            underlineColorAndroid="transparent"
                                            placeholderTextColor="#a9a9a1"
-                                           autoCapitalize="none"
-                                />
+                                           autoCapitalize="none"/>
                             </View>
+                            <View style={styles.inputContainer}>
 
-                            <View style={styles.container0}>
-                                <TextInput style={styles.input}
+                                <TextInput style={styles.inputs}
                                            onChangeText={props.handleChange('ville')}
-                                           value={props.values.nom_complet}
+                                           value={props.values.ville}
                                            onBlur={props.handleBlur('ville')}
                                            placeholder="Ville"
                                            underlineColorAndroid="transparent"
                                            placeholderTextColor="#a9a9a1"
-                                           autoCapitalize="none"
-                                />
+                                           autoCapitalize="none"/>
                             </View>
+
+
 
                             <View style={styles.container0}>
                                 <View View style={styles.container1}>
@@ -226,6 +224,7 @@ export default class Inscription extends Component {
                                                         onPress={props.handleSubmit}>
                                         <Text style={styles.signUpText}>S'inscrire</Text>
                                     </TouchableHighlight>
+                                    <Text style={styles.registerHere} onPress={() => this.props.CloseModal()}>Sign in here</Text>
                                 </View>
                             </View>
 
@@ -240,6 +239,7 @@ export default class Inscription extends Component {
 
 
             </View>
+            </ScrollView>
 
         );
     }

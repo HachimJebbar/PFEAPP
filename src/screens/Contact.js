@@ -23,15 +23,15 @@ export default class Contact extends Component{
         return (
             <View style={styles.container }>
                 <View style={styles.container1 }>
-                <Text style={styles.text1 }> Votre numéro de téléphone</Text>
-                <TextInput style={styles.input}
-                    placeholder="Numéro de téléphone"
-                           onChangeText={text => this.setState({numero: text})}
-                />
+                    <Text style={styles.text1 }> Votre numéro de téléphone</Text>
+                    <TextInput style={styles.input}
+                               placeholder="Numéro de téléphone"
+                               onChangeText={text => this.setState({numero: text})}
+                    />
                 </View>
                 <Text style={styles.text1 }> Votre adresse</Text>
                 <TextInput style={styles.input}
-                    placeholder="Adresse"
+                           placeholder="Adresse"
                            onChangeText={text => this.setState({adresse: text})}
                 />
                 <Text style={styles.text1 }> Où se déroule le cours ?</Text>

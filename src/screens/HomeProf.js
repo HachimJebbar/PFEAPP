@@ -31,13 +31,13 @@ export default class HomeProf extends React.Component {
                 <View style={styles.imagesView}>
                     <View style={styles.container1}>
                         <View style={styles.container11}>
-                            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communication')} >
+                            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communicationPro')} >
                                 <Image source={require('../../assets/Images/communication.png')} style = {styles.ImageView1} />
                                 <Text style={styles.text5 }>Communication</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.container12}>
-                            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('musique')} >
+                            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('musique1')} >
                                 <Image source={require('../../assets/Images/music.png')} style = {styles.ImageView2} />
                                 <Text style={styles.text5 }>Musique</Text>
                             </TouchableOpacity>
@@ -45,13 +45,13 @@ export default class HomeProf extends React.Component {
                     </View>
                     <View style={styles.container2}>
                         <View style={styles.container21}>
-                            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('dev')} >
+                            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('dev1')} >
                                 <Image source={require('../../assets/Images/dev.png')} style = {styles.ImageView3} />
                                 <Text style={styles.text5 }>Developpement</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.container22}>
-                            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('langues')} >
+                            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('langues1')} >
                                 <Image source={require('../../assets/Images/langue.png')} style = {styles.ImageView4} />
                                 <Text style={styles.text5 }>Langue</Text>
                             </TouchableOpacity>

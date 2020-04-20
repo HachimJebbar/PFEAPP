@@ -5,20 +5,19 @@ import Header from "../shared/header";
 import HeaderNone from "../shared/headerNone";
 import React from 'react';
 import Description from "../screens/Description";
-import communication from "../Modules/communication";
-import dev from "../Modules/dev";
-import musique from "../Modules/musique";
-import langues from "../Modules/langues";
 import Contact from "../screens/Contact";
 import pdp from "../screens/pdp";
 import HomeProf from "../screens/HomeProf";
+import communicationPro from "../Modules/communication1";
+import musique1 from "../Modules/musique1";
+import dev1 from "../Modules/dev1";
 const screens = {
 
   HomeProf:{
       screen: HomeProf,
         navigationOptions: ({ navigation }) => {
         return {
-        headerTitle: () => <Header navigation={navigation} title='Home'/>,
+        headerTitle: () => <Header navigation={navigation} title='HomeProf'/>,
         }
     }
   },
@@ -54,32 +53,32 @@ const screens = {
       }
     }
   },
-  communication: {
-    screen: communication,
+  communicationPro: {
+    screen: communicationPro,
     navigationOptions: ({ navigation }) => {
       return {
         headerTitle: () => <HeaderNone navigation={navigation} title='Communication'/>,
       }
     }
   },
- musique: {
-    screen: musique,
+ musique1: {
+    screen: musique1,
     navigationOptions: ({ navigation }) => {
       return {
         headerTitle: () => <HeaderNone navigation={navigation} title='Musique'/>,
       }
     }
   },
-  langues: {
-    screen: langues,
+  langues1: {
+    screen: langues1,
     navigationOptions: ({ navigation }) => {
       return {
         headerTitle: () => <HeaderNone navigation={navigation} title='Langues'/>,
       }
     }
   },
-  dev: {
-    screen: dev,
+  dev1: {
+    screen: dev1,
     navigationOptions: ({ navigation }) => {
       return {
         headerTitle: () => <HeaderNone navigation={navigation} title='Developpement'/>,
