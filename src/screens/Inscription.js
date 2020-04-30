@@ -45,6 +45,13 @@ export default class Inscription extends Component {
                     numero: values.numero,
                     adresse : values.adresse,
                     ville : values.ville,
+                    annonces: {
+                        annonce : {
+                            matiere: "",
+                            public : "",
+                            prix : "",
+                        }
+                    },
 
                 });
                 Alert.alert('Action!', 'Your account is set');
@@ -52,21 +59,6 @@ export default class Inscription extends Component {
         }else {
             this.setState({ error: 'Password match' })
         }
-
-    };
-    handleDelete = imageUri => {
-        const images = this.state.images.filter(image => image.uri !== imageUri);
-        this.setState({ images: images });
-    };
-
-    onChooseImagePress = async () => {
-
-
-            let result = await ImagePicker.launchImageLibraryAsync();
-            this.state.images.push({uri: result.uri, name: this.state.imageName});
-            this.setState({imageName: ""})
-
-
 
     };
 
@@ -97,148 +89,148 @@ export default class Inscription extends Component {
         return (
             <ScrollView>
 
-            <View style={styles.container}>
+                <View style={styles.container}>
 
 
-                <Formik
-                    initialValues={{
-                        nom_complet: '',
-                        email: '',
-                        password: '',
-                        repeatpassword: '',
-                        numero:'',
-                        adresse:'',
-                        ville:'',
-                        images:'',
-                        imageName:'',
+                    <Formik
+                        initialValues={{
+                            nom_complet: '',
+                            email: '',
+                            password: '',
+                            repeatpassword: '',
+                            numero:'',
+                            adresse:'',
+                            ville:'',
+                            images:'',
+                            imageName:'',
 
-                    }}
-                    validationSchema={Check}
-                    onSubmit={(values) => {
-                        this.signUpUser(values);
-                    }}>
+                        }}
+                        validationSchema={Check}
+                        onSubmit={(values) => {
+                            this.signUpUser(values);
+                        }}>
 
-                    {(props) => (
+                        {(props) => (
 
-                        <View style={styles.inputView}>
-                            <Text style={styles.text}> Inscrivez-Vous </Text>
-                            <Text>{this.state.error}</Text>
-                            <View style={styles.inputContainer}>
+                            <View style={styles.inputView}>
+                                <Text style={styles.text}> Inscrivez-Vous </Text>
+                                <Text>{this.state.error}</Text>
+                                <View style={styles.inputContainer}>
 
-                                <TextInput style={styles.inputs}
-                                           onChangeText={props.handleChange('nom_complet')}
-                                           value={props.values.nom_complet}
-                                           onBlur={props.handleBlur('nom_complet')}
-                                           placeholder="Nom Complet"
-                                           underlineColorAndroid="transparent"
-                                           placeholderTextColor="#a9a9a1"
-                                           autoCapitalize="none"/>
-                            </View>
-                            <Text style={styles.errorText}>{props.touched.nom_complet && props.errors.nom_complet}</Text>
-                            <View style={styles.inputContainer}>
-
-                                <TextInput style={styles.inputs}
-                                           onChangeText={props.handleChange('email')}
-                                           value={props.values.email}
-                                           onBlur={props.handleBlur('email')}
-                                           placeholder="Email address"
-                                           underlineColorAndroid="transparent"
-                                           placeholderTextColor="#a9a9a1"
-                                           autoCapitalize="none"
-                                />
-                                <Text style={styles.errorText}>{props.touched.email && props.errors.email}</Text>
-                            </View>
-
-                            <View style={styles.inputContainer}>
-
-                                <TextInput style={styles.inputs}
-                                           onChangeText={props.handleChange('password')}
-                                           value={props.values.password}
-                                           onBlur={props.handleBlur('password')}
-                                           secureTextEntry={this.state.secureTextEntryFirst}
-                                           placeholder="Password"
-                                           underlineColorAndroid="transparent"
-                                           placeholderTextColor="#a9a9a1"
-                                           autoCapitalize="none"/>
-                                <Text onPress={() => secureTextEntryFirst()}
-                                      style={styles.PasswordIcon}>{this.state.showFirst}</Text>
-                            </View>
-
-                            <Text style={styles.errorText}>{props.touched.password && props.errors.password}</Text>
-                            <View style={styles.inputContainer}>
-
-                                <TextInput style={styles.inputs}
-                                           onChangeText={props.handleChange('repeatpassword')}
-                                           value={props.values.repeatpassword}
-                                           onBlur={props.handleBlur('repeatpassword')}
-                                           secureTextEntry={this.state.secureTextEntrySecond}
-                                           placeholder="Repeat Password"
-                                           underlineColorAndroid="transparent"
-                                           placeholderTextColor="#a9a9a1"
-                                           autoCapitalize="none"
-                                />
-                                <Text onPress={() => secureTextEntrySecond()}
-                                      style={styles.PasswordIcon}>{this.state.showSecond}</Text>
-                            </View>
-                            <Text
-                                style={styles.errorText}>{props.touched.repeatpassword && props.errors.repeatpassword}</Text>
-                            <View style={styles.inputContainer}>
-
-                                <TextInput style={styles.inputs}
-                                           onChangeText={props.handleChange('numero')}
-                                           value={props.values.numero}
-                                           onBlur={props.handleBlur('numero')}
-                                           placeholder="Numero"
-                                           underlineColorAndroid="transparent"
-                                           placeholderTextColor="#a9a9a1"
-                                           autoCapitalize="none"/>
-                            </View>
-                            <View style={styles.inputContainer}>
-
-                                <TextInput style={styles.inputs}
-                                           onChangeText={props.handleChange('adresse')}
-                                           value={props.values.adresse}
-                                           onBlur={props.handleBlur('adresse')}
-                                           placeholder="Adresse"
-                                           underlineColorAndroid="transparent"
-                                           placeholderTextColor="#a9a9a1"
-                                           autoCapitalize="none"/>
-                            </View>
-                            <View style={styles.inputContainer}>
-
-                                <TextInput style={styles.inputs}
-                                           onChangeText={props.handleChange('ville')}
-                                           value={props.values.ville}
-                                           onBlur={props.handleBlur('ville')}
-                                           placeholder="Ville"
-                                           underlineColorAndroid="transparent"
-                                           placeholderTextColor="#a9a9a1"
-                                           autoCapitalize="none"/>
-                            </View>
-
-
-
-                            <View style={styles.container0}>
-                                <View View style={styles.container1}>
-                                    <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]}
-                                                        onPress={props.handleSubmit}>
-                                        <Text style={styles.signUpText}>S'inscrire</Text>
-                                    </TouchableHighlight>
-                                    <Text style={styles.registerHere} onPress={() => this.props.CloseModal()}>Sign in here</Text>
+                                    <TextInput style={styles.inputs}
+                                               onChangeText={props.handleChange('nom_complet')}
+                                               value={props.values.nom_complet}
+                                               onBlur={props.handleBlur('nom_complet')}
+                                               placeholder="Nom Complet"
+                                               underlineColorAndroid="transparent"
+                                               placeholderTextColor="#a9a9a1"
+                                               autoCapitalize="none"/>
                                 </View>
+                                <Text style={styles.errorText}>{props.touched.nom_complet && props.errors.nom_complet}</Text>
+                                <View style={styles.inputContainer}>
+
+                                    <TextInput style={styles.inputs}
+                                               onChangeText={props.handleChange('email')}
+                                               value={props.values.email}
+                                               onBlur={props.handleBlur('email')}
+                                               placeholder="Email address"
+                                               underlineColorAndroid="transparent"
+                                               placeholderTextColor="#a9a9a1"
+                                               autoCapitalize="none"
+                                    />
+                                    <Text style={styles.errorText}>{props.touched.email && props.errors.email}</Text>
+                                </View>
+
+                                <View style={styles.inputContainer}>
+
+                                    <TextInput style={styles.inputs}
+                                               onChangeText={props.handleChange('password')}
+                                               value={props.values.password}
+                                               onBlur={props.handleBlur('password')}
+                                               secureTextEntry={this.state.secureTextEntryFirst}
+                                               placeholder="Password"
+                                               underlineColorAndroid="transparent"
+                                               placeholderTextColor="#a9a9a1"
+                                               autoCapitalize="none"/>
+                                    <Text onPress={() => secureTextEntryFirst()}
+                                          style={styles.PasswordIcon}>{this.state.showFirst}</Text>
+                                </View>
+
+                                <Text style={styles.errorText}>{props.touched.password && props.errors.password}</Text>
+                                <View style={styles.inputContainer}>
+
+                                    <TextInput style={styles.inputs}
+                                               onChangeText={props.handleChange('repeatpassword')}
+                                               value={props.values.repeatpassword}
+                                               onBlur={props.handleBlur('repeatpassword')}
+                                               secureTextEntry={this.state.secureTextEntrySecond}
+                                               placeholder="Repeat Password"
+                                               underlineColorAndroid="transparent"
+                                               placeholderTextColor="#a9a9a1"
+                                               autoCapitalize="none"
+                                    />
+                                    <Text onPress={() => secureTextEntrySecond()}
+                                          style={styles.PasswordIcon}>{this.state.showSecond}</Text>
+                                </View>
+                                <Text
+                                    style={styles.errorText}>{props.touched.repeatpassword && props.errors.repeatpassword}</Text>
+                                <View style={styles.inputContainer}>
+
+                                    <TextInput style={styles.inputs}
+                                               onChangeText={props.handleChange('numero')}
+                                               value={props.values.numero}
+                                               onBlur={props.handleBlur('numero')}
+                                               placeholder="Numero"
+                                               underlineColorAndroid="transparent"
+                                               placeholderTextColor="#a9a9a1"
+                                               autoCapitalize="none"/>
+                                </View>
+                                <View style={styles.inputContainer}>
+
+                                    <TextInput style={styles.inputs}
+                                               onChangeText={props.handleChange('adresse')}
+                                               value={props.values.adresse}
+                                               onBlur={props.handleBlur('adresse')}
+                                               placeholder="Adresse"
+                                               underlineColorAndroid="transparent"
+                                               placeholderTextColor="#a9a9a1"
+                                               autoCapitalize="none"/>
+                                </View>
+                                <View style={styles.inputContainer}>
+
+                                    <TextInput style={styles.inputs}
+                                               onChangeText={props.handleChange('ville')}
+                                               value={props.values.ville}
+                                               onBlur={props.handleBlur('ville')}
+                                               placeholder="Ville"
+                                               underlineColorAndroid="transparent"
+                                               placeholderTextColor="#a9a9a1"
+                                               autoCapitalize="none"/>
+                                </View>
+
+
+
+                                <View style={styles.container0}>
+                                    <View View style={styles.container1}>
+                                        <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]}
+                                                            onPress={props.handleSubmit} >
+                                            <Text style={styles.signUpText}>S'inscrire</Text>
+                                        </TouchableHighlight>
+                                        <Text style={styles.registerHere} onPress={() => this.props.CloseModal()}>Sign in here</Text>
+                                    </View>
+                                </View>
+
                             </View>
 
-                        </View>
 
 
+                        )
 
-                    )
-
-                    }
-                </Formik>
+                        }
+                    </Formik>
 
 
-            </View>
+                </View>
             </ScrollView>
 
         );

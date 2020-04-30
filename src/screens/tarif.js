@@ -10,9 +10,11 @@ export default class App extends Component {
         const {state} = props.navigation;
     }
     state = {
-        description1: "",
-        parcours: "",
-        langue: this.props.navigation.getParam('data1')
+        description1: this.props.navigation.getParam('text'),
+        parcours: this.props.navigation.getParam('text'),
+        langue: this.props.navigation.getParam('data1'),
+        type: this.props.navigation.getParam('data'),
+        tarif : "",
     };
 
 //     onSubmit() {
@@ -31,30 +33,23 @@ export default class App extends Component {
         return (
             <View style={styles.container }>
                 <View style={styles.container1 }>
-                    <Text style={styles.text1 }>Description  </Text>
-                    <Text style={styles.text1 }>de votre profil </Text>
-                <TextInput style={styles.input } multiline
-                    placeholder="ex : Etudiant en école d'ingénieur donne cours de maths et physique du collége au lycée
-                    à Rabat 'ou' Pianiste concertiste 15ans d'expérience donne cours de pia,o et solfége à domicile"
-                           onChangeText={text => this.setState({description1: text})}
-                />
+                    <Text style={styles.text1 }>Précisez le tarif d'une   </Text>
+                    <Text style={styles.text1 }>heure de cours </Text>
+                    <View style={styles.container2 }>
+                    <TextInput style={styles.input }
+                               placeholder="Tarif"
+                               onChangeText={text => this.setState({tarif: text})}
+                    />
+                    <Text style={styles.text2 }>dh/h </Text>
+                    </View>
                 </View>
                 <View>
-                    <Text style={styles.text1 }>Description  </Text>
-                    <Text style={styles.text1 }>de votre parcours</Text>
-                <TextInput  style={styles.input } multiline
-                    placeholder="ex : Je suis ingénieur(e) / étudiant(e) / musicien(ne) .... je donne des cours depuis
-                    ..... je suis diplomé(e)"
-                           onChangeText={text => this.setState({parcours: text})}
-                />
-                </View>
-                <View>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('reviewDetails', {data1:this.state.langue, data2:this.state.description1, data3:this.state.description2})} style={styles.ButtonStyle}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('annonce')} style={styles.ButtonStyle}>
                         <Text style={{fontSize : 18,color: 'white' }}>Continuer</Text>
                     </TouchableOpacity>
                 </View>
             </View>
-             )
+        )
     }
 }
 const styles = StyleSheet.create({
@@ -63,16 +58,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     container1: {
-        marginVertical: 35,
+        marginVertical: '20%',
+    },
+    container2: {
+        flexDirection: 'row',
     },
     input:{
-        width : 340,
-        height : 120 ,
-        padding : 15 ,
+        width : 270,
+        height : 15 ,
+        paddingLeft:15,
         borderWidth : 7,
         borderColor : '#F5F1F1',
-        borderRadius:5,
-        marginVertical : 10 ,
+        marginVertical : '15%',
         marginLeft : 40 ,
     },
     text1 : {
@@ -80,6 +77,16 @@ const styles = StyleSheet.create({
         color : '#62A7A9',
         marginLeft : 40 ,
         fontWeight: 'bold',
+
+    },
+    text2 : {
+        fontSize : 20,
+        color : '#fff',
+        fontWeight: 'bold',
+        marginVertical : '15%',
+        backgroundColor : '#F5F1F1',
+        height : 45 ,
+        paddingTop: 5,
     },
     ButtonStyle:{
         backgroundColor: '#62A7A9',
