@@ -31,7 +31,7 @@ export default class HomeProf extends React.Component {
                 <View style={styles.imagesView}>
                     <View style={styles.container1}>
                         <View style={styles.container11}>
-                            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communicationPro')} >
+                            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('communication1')} >
                                 <Image source={require('../../assets/Images/communication.png')} style = {styles.ImageView1} />
                                 <Text style={styles.text5 }>Communication</Text>
                             </TouchableOpacity>

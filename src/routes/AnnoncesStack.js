@@ -6,14 +6,13 @@ import React from 'react';
 import HomeProf from "../screens/HomeProf";
 import Description from "../screens/Description";
 import HeaderNone from "../shared/headerNone";
-import ReviewDetails from "../screens/reviewDetails";
-import Contact from "../screens/Contact";
-import pdp from "../screens/pdp";
-import communication from "../Modules/communication";
-import musique from "../Modules/musique";
-import langues from "../Modules/langues";
-import dev from "../Modules/dev";
-
+import reviewDetails from "../screens/reviewDetails";
+import communication1 from "../Modules/communication1";
+import musique1 from "../Modules/musique1";
+import langues1 from "../Modules/langues1";
+import dev1 from "../Modules/dev1";
+import tarif from "../screens/tarif";
+import annonce from "../screens/annonce";
 const screens = {
     Annonces:{
         screen: Annonces,
@@ -39,56 +38,56 @@ const screens = {
             }
         }
     },
-    ReviewDetails: {
-        screen: ReviewDetails,
+    reviewDetails: {
+        screen: reviewDetails,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <HeaderNone navigation={navigation} title='ReviewDetails'/>,
+                headerTitle: () => <HeaderNone navigation={navigation} title='Cours'/>,
             }
         }
     },
-    Contact: {
-        screen: Contact,
+    tarif: {
+        screen:tarif ,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <HeaderNone navigation={navigation} title='Contact'/>,
+                headerTitle: () => <HeaderNone navigation={navigation} title='Tarif'/>,
             }
         }
     },
-    pdp: {
-        screen:pdp ,
+    annonce: {
+        screen:annonce ,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <HeaderNone navigation={navigation} title='Image'/>,
+                headerTitle: () => <HeaderNone navigation={navigation} title='Annonce'/>,
             }
         }
     },
-    communication: {
-        screen: communication,
+    communication1: {
+        screen: communication1,
         navigationOptions: ({ navigation }) => {
             return {
                 headerTitle: () => <HeaderNone navigation={navigation} title='Communication'/>,
             }
         }
     },
-    musique: {
-        screen: musique,
+    musique1: {
+        screen: musique1,
         navigationOptions: ({ navigation }) => {
             return {
                 headerTitle: () => <HeaderNone navigation={navigation} title='Musique'/>,
             }
         }
     },
-    langues: {
-        screen: langues,
+    langues1: {
+        screen: langues1,
         navigationOptions: ({ navigation }) => {
             return {
                 headerTitle: () => <HeaderNone navigation={navigation} title='Langues'/>,
             }
         }
     },
-    dev: {
-        screen: dev,
+    dev1: {
+        screen: dev1,
         navigationOptions: ({ navigation }) => {
             return {
                 headerTitle: () => <HeaderNone navigation={navigation} title='Developpement'/>,

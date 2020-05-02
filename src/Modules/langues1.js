@@ -18,28 +18,28 @@ export default class langues extends React.Component {
             <View style={styles.container}>
                 <Text style={styles.text1 }>Liste des matières populaires : </Text>
                 <ScrollView>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'Anglais'})}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Anglais'})}>
                         <Text style={styles.text5 }>Anglais</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'Allemand'})}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Allemand'})}>
                         <Text style={styles.text5 }>Allemand</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'Espagnole'})}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Espagnole'})}>
                         <Text style={styles.text5 }>Espagnole</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'Arabe'})}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Arabe'})}>
                         <Text style={styles.text5 }>Arabe</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'Français'})}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Français'})}>
                         <Text style={styles.text5 }>Français</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'Japonnais'})}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Japonnais'})}>
                         <Text style={styles.text5 }>Japonnais</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'Italien'})}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Italien'})}>
                         <Text style={styles.text5 }>Italien</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'Chinois'})}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Description', {data1:'Chinois'})}>
                         <Text style={styles.text5 }>Chinois</Text>
                     </TouchableOpacity>
                 </ScrollView>
