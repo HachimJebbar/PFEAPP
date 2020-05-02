@@ -45,6 +45,12 @@ export default class Inscription extends Component {
                     numero: values.numero,
                     adresse : values.adresse,
                     ville : values.ville,
+                    annonces: {
+                        matiere: "",
+                        public : "",
+                        prix : "",
+                        descptions: {},
+                    },
 
                 });
                 Alert.alert('Action!', 'Your account is set');
@@ -52,21 +58,6 @@ export default class Inscription extends Component {
         }else {
             this.setState({ error: 'Password match' })
         }
-
-    };
-    handleDelete = imageUri => {
-        const images = this.state.images.filter(image => image.uri !== imageUri);
-        this.setState({ images: images });
-    };
-
-    onChooseImagePress = async () => {
-
-
-            let result = await ImagePicker.launchImageLibraryAsync();
-            this.state.images.push({uri: result.uri, name: this.state.imageName});
-            this.setState({imageName: ""})
-
-
 
     };
 
@@ -221,7 +212,7 @@ export default class Inscription extends Component {
                             <View style={styles.container0}>
                                 <View View style={styles.container1}>
                                     <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]}
-                                                        onPress={props.handleSubmit}>
+                                                        onPress={props.handleSubmit} >
                                         <Text style={styles.signUpText}>S'inscrire</Text>
                                     </TouchableHighlight>
                                     <Text style={styles.registerHere} onPress={() => this.props.CloseModal()}>Sign in here</Text>
