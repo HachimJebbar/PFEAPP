@@ -8,10 +8,11 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         const {state} = props.navigation;
+
     }
     state = {
+        description2: "",
         description1: "",
-        parcours: "",
         langue: this.props.navigation.getParam('data1')
     };
 
@@ -27,8 +28,10 @@ export default class App extends Component {
 //                   });
 // }
     render() {
+        console.log(this.state.langue)
 
         return (
+
             <View style={styles.container }>
                 <View style={styles.container1 }>
                     <Text style={styles.text1 }>Description  </Text>
@@ -36,7 +39,7 @@ export default class App extends Component {
                 <TextInput style={styles.input } multiline
                     placeholder="ex : Etudiant en école d'ingénieur donne cours de maths et physique du collége au lycée
                     à Rabat 'ou' Pianiste concertiste 15ans d'expérience donne cours de pia,o et solfége à domicile"
-                           onChangeText={text => this.setState({description1: text})}
+                           onChangeText={data2 => this.setState({description1: data2})}
                 />
                 </View>
                 <View>
@@ -45,7 +48,7 @@ export default class App extends Component {
                 <TextInput  style={styles.input } multiline
                     placeholder="ex : Je suis ingénieur(e) / étudiant(e) / musicien(ne) .... je donne des cours depuis
                     ..... je suis diplomé(e)"
-                           onChangeText={text => this.setState({parcours: text})}
+                           onChangeText={data3 => this.setState({description2: data3})}
                 />
                 </View>
                 <View>

@@ -46,18 +46,11 @@ export default class Inscription extends Component {
                     adresse : values.adresse,
                     ville : values.ville,
                     annonces: {
-<<<<<<< HEAD
-                        matiere: "",
-                        public : "",
-                        prix : "",
-                        descptions: {},
-=======
                         annonce : {
                             matiere: "",
                             public : "",
                             prix : "",
                         }
->>>>>>> 30cf434052e70eec27ea16fbf8150b6c647a6083
                     },
 
                 });
@@ -217,15 +210,6 @@ export default class Inscription extends Component {
 
 
 
-<<<<<<< HEAD
-                            <View style={styles.container0}>
-                                <View View style={styles.container1}>
-                                    <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]}
-                                                        onPress={props.handleSubmit} >
-                                        <Text style={styles.signUpText}>S'inscrire</Text>
-                                    </TouchableHighlight>
-                                    <Text style={styles.registerHere} onPress={() => this.props.CloseModal()}>Sign in here</Text>
-=======
                                 <View style={styles.container0}>
                                     <View View style={styles.container1}>
                                         <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]}
@@ -234,7 +218,6 @@ export default class Inscription extends Component {
                                         </TouchableHighlight>
                                         <Text style={styles.registerHere} onPress={() => this.props.CloseModal()}>Sign in here</Text>
                                     </View>
->>>>>>> 30cf434052e70eec27ea16fbf8150b6c647a6083
                                 </View>
 
                             </View>

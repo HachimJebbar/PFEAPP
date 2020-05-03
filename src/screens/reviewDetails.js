@@ -6,16 +6,21 @@ export default class reviewDetails extends React.Component {
     constructor(props){
         super(props);
         const {state} = props.navigation;
+this.state = {
+    description2: props.navigation.getParam('data3'),
+    description1: props.navigation.getParam('data2'),
+    langue: props.navigation.getParam('data1'),
+    type: "",
+};
         
 
     }
-    state = {
-        description1: this.props.navigation.getParam('text'),
-        parcours: this.props.navigation.getParam('text'),
-        langue: this.props.navigation.getParam('data1'),
-        type: "",
-    };
+
 render(){
+    console.log(this.state.langue)
+    console.log(this.state.description1)
+    console.log(this.state.description2)
+
     return (
         console.log(this.state.type),
         <View style={styles.container}>
@@ -24,17 +29,17 @@ render(){
             <Text style={styles.text1 }> souhaitez-vous donner ?  </Text>
             </View>
             <View style={styles.container2}>
-            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('tarif', {data:'En Groupe'})} >
+            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('tarif', {data4:'En Groupe'})} >
                 <Image source={require('../../assets/Images/grp.gif')} style = {styles.ImageView} />
                 <Text style={styles.text2 }> En Groupe  </Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('tarif', {data:'Individuel'})} >
+            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('tarif', {data4:'Individuel'})} >
                 <Image source={require('../../assets/Images/ind.gif')} style = {styles.ImageView} />
                 <Text style={styles.text2 }> Individuel  </Text>
             </TouchableOpacity>
             </View>
             <View>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('tarif')} style={styles.ButtonStyle}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('tarif', {data1:this.state.langue, data2:this.state.description1, data3:this.state.description2, data4:this.state.type })} style={styles.ButtonStyle}>
                     <Text style={{fontSize : 18,color: 'white' }}>Continuer</Text>
                 </TouchableOpacity>
             </View>

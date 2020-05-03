@@ -7,15 +7,17 @@ import {db} from '../FireBase/FireBase';
 export default class App extends Component {
     constructor(props) {
         super(props);
-        const {state} = props.navigation;
+        const {state} = this.props.navigation;
+
     }
     state = {
-        description1: this.props.navigation.getParam('text'),
-        parcours: this.props.navigation.getParam('text'),
+
+        type: this.props.navigation.getParam('data4'),
+        description2: this.props.navigation.getParam('data3'),
+        description1: this.props.navigation.getParam('data2'),
         langue: this.props.navigation.getParam('data1'),
-        type: this.props.navigation.getParam('data'),
-        tarif : "",
-    };
+        tarif: "",
+    }
 
 //     onSubmit() {
 //     db.ref('/descriptions').push({
@@ -38,13 +40,13 @@ export default class App extends Component {
                     <View style={styles.container2 }>
                     <TextInput style={styles.input }
                                placeholder="Tarif"
-                               onChangeText={text => this.setState({tarif: text})}
+                               onChangeText={data5 => this.setState({tarif: data5})}
                     />
                     <Text style={styles.text2 }>dh/h </Text>
                     </View>
                 </View>
                 <View>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('annonce')} style={styles.ButtonStyle}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('annonce', {data1:this.state.langue, data2:this.state.description1, data3:this.state.description2, data4:this.state.type, data5:this.state.tarif })} style={styles.ButtonStyle}>
                         <Text style={{fontSize : 18,color: 'white' }}>Continuer</Text>
                     </TouchableOpacity>
                 </View>

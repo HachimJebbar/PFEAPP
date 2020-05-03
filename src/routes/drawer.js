@@ -8,6 +8,8 @@ import {Container, Header, Body, Content} from 'native-base';
 import React from "react";
 import {auth} from "../FireBase/FireBase";
 import { Updates } from 'expo';
+import Demandes from "../screens/Demandes";
+import DemandesStack from "./DemandesStack";
 
 
 
@@ -22,7 +24,7 @@ const RootDrawerNavigator = createDrawerNavigator({
         screen: AnnoncesStack,
     },
     Demandes: {
-        screen: AnnoncesStack,
+        screen: DemandesStack,
     },
     Contact:{
         screen:AnnoncesStack,

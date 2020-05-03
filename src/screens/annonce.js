@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
 import { ScrollView, Image, Text, View, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
+export default class annonce extends Component {
+    constructor(props) {
+        super(props);
+        const {state} = props.navigation;
+this.state = {
+    tarif : this.props.navigation.getParam('data5'),
+    type: this.props.navigation.getParam('data4'),
+    description2: this.props.navigation.getParam('data3'),
+    description1: this.props.navigation.getParam('data2'),
+    langue: this.props.navigation.getParam('data1'),
 
-    state = {
-        description1: this.props.navigation.getParam('text'),
-        parcours: this.props.navigation.getParam('text'),
-        langue: this.props.navigation.getParam('data1'),
-        type: this.props.navigation.getParam('data'),
-        tarif : this.props.navigation.getParam('text'),
-    };
+};
+    }
+
+
+
+
+
 
     render() {
         console.log(this.state.type)
+        console.log(this.state.langue)
+        console.log(this.state.tarif)
+        console.log(this.state.description1)
+        console.log(this.state.description2)
         return (
 
             <View style={styles.container}>
@@ -28,7 +41,7 @@ export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component
                                 <View style={styles.container21 }>
                                     <View style={styles.container211 }>
                                         <Text style={styles.text3 }>Hachim Jebbar</Text>
-                                        <Text style={styles.text4 } >Matiere   :  Arabe</Text>
+                                        <Text style={styles.text4 } >Matiere   : {this.state.langue}</Text>
                                     </View>
                                     <View style={styles.container212 }>
                                         <Image style={styles.ImageView} source={{uri: "https://reactnative.dev/img/tiny_logo.png"}} />
@@ -36,18 +49,18 @@ export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component
                                 </View>
                                 <View style={styles.container22 }>
                                     <Text style={styles.text5 }>{this.state.tarif}DH/H cours</Text>
-                                    <Text style={styles.text5 }>{this.state.data}</Text>
+
                                 </View>
                                 <View style={styles.container23 }>
-                                    <Text style={styles.text6 }>Description de votre parcours</Text>
+                                    <Text style={styles.text6 }> {this.state.description1}</Text>
                                 </View>
                                 <View style={styles.container23 }>
-                                    <Text style={styles.text6 }>Description de votre méthodoligie</Text>
+                                    <Text style={styles.text6 }> {this.state.description2}</Text>
                                 </View>
                             </View>
                         </View>
                         <View>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('reviewDetails', {data1:this.state.langue, data2:this.state.description1, data3:this.state.description2})} style={styles.ButtonStyle}>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('reviewDetails') } style={styles.ButtonStyle}>
                                 <Text style={{fontSize : 18,color: 'white',fontWeight: 'bold', }}>Valider</Text>
                             </TouchableOpacity>
                         </View>

@@ -1,23 +1,21 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import Home from '../screens/Home'
-import ReviewDetails from '../screens/reviewDetails'
-import test from "../screens/Test"
-import About from '../screens/Annonces'
+
 import Header from "../shared/header";
 import React from 'react';
+import Demandes from "../screens/Demandes";
 
 const screens = {
-    About:{
-        screen: About,
+    Demandes:{
+        screen: Demandes,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header navigation={navigation} title='About'/>,
+                headerTitle: () => <Header navigation={navigation} title='Demandes'/>,
             }
         }
     },
 
 
 };
-const AnnoncesStack = createStackNavigator(screens);
-export default AnnoncesStack;
+const DemandesStack = createStackNavigator(screens);
+export default DemandesStack;

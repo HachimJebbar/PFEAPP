@@ -26,6 +26,7 @@ export default class Contact extends Component{
                     <Text style={styles.text1 }> Votre numéro de téléphone</Text>
                     <TextInput style={styles.input}
                                placeholder="Numéro de téléphone"
+                               keyboardType={'numeric'}
                                onChangeText={text => this.setState({numero: text})}
                     />
                 </View>
