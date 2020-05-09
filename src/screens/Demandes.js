@@ -31,9 +31,9 @@ export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component
                                     </View>
                                     <View style={styles.container211 }>
 
-                                        <TouchableHighlight style={[styles.buttonContainer, styles.modifier]} onPress={() => this.onClickListener('sign_up')}>
+                                        <TouchableOpacity style={[styles.buttonContainer, styles.modifier]} onPress={() => this.props.navigation.navigate('detailsdemande')}>
                                             <Text style={styles.text5}>Afficher les demandes</Text>
-                                        </TouchableHighlight>
+                                        </TouchableOpacity>
                                     </View>
                                 </View>
                             </View>
@@ -55,9 +55,6 @@ export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component
                             </View>
                         </View>
                     </ScrollView>
-                    <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('HomeProf') } >
-                        <Text style={{fontWeight: 'bold',fontSize : 50,color: '#fff' }}>+</Text>
-                    </TouchableOpacity>
 
                 </ScrollView>
             </View>
@@ -142,17 +139,5 @@ const styles = StyleSheet.create({
         marginVertical:3,
         fontWeight: 'bold',
     },
-    ButtonStyle:{
-        backgroundColor: '#E4D8D8',
-        borderColor : '#E4D8D8',
-        borderWidth:2,
-        borderRadius:200,
-        height : '13%',
-        width : '18%',
-        marginLeft : '76%' ,
-        marginTop : '5%',
-        textAlign : 'center',
-        alignItems : 'center',
 
-    },
 });

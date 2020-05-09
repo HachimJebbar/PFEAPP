@@ -38,7 +38,7 @@ export default class App extends Component {
                     <Text style={styles.text1 }>de votre profil </Text>
                 <TextInput style={styles.input } multiline
                     placeholder="ex : Etudiant en école d'ingénieur donne cours de maths et physique du collége au lycée
-                    à Rabat 'ou' Pianiste concertiste 15ans d'expérience donne cours de pia,o et solfége à domicile"
+                    à Rabat 'ou' Pianiste concertiste 15ans d'expérience donne cours de piano  à domicile"
                            onChangeText={data2 => this.setState({description1: data2})}
                 />
                 </View>

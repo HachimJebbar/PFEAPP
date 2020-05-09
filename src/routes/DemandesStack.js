@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Header from "../shared/header";
 import React from 'react';
 import Demandes from "../screens/Demandes";
-
+import detailsdemande from  "../screens/detailsdemande"
 const screens = {
     Demandes:{
         screen: Demandes,
@@ -14,7 +14,14 @@ const screens = {
             }
         }
     },
-
+    detailsdemande:{
+        screen: detailsdemande,
+        navigationOptions: ({ navigation }) => {
+            return {
+                headerTitle: () => <Header navigation={navigation} title='demandes'/>,
+            }
+        }
+    },
 
 };
 const DemandesStack = createStackNavigator(screens);

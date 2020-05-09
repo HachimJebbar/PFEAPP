@@ -16,10 +16,6 @@ this.state = {
     }
 
 
-
-
-
-
     render() {
         console.log(this.state.type)
         console.log(this.state.langue)
@@ -32,7 +28,7 @@ this.state = {
                 <ScrollView>
 
                     <TouchableOpacity >
-                        <Text style={styles.text1 } multine>"Bravo ! Votre annonce est compléte .</Text>
+                        <Text style={styles.text1 } multine>"Votre annonce sera traité dans les 24h suivantes .</Text>
                     </TouchableOpacity>
 
                     <ScrollView>
@@ -48,14 +44,16 @@ this.state = {
                                     </View>
                                 </View>
                                 <View style={styles.container22 }>
-                                    <Text style={styles.text5 }>{this.state.tarif}DH/H cours</Text>
-
+                                    <Text style={styles.text5 }>{this.state.tarif}100DH/H cours</Text>
+                                    <Text style={styles.text5 }>{this.state.type}</Text>
                                 </View>
                                 <View style={styles.container23 }>
-                                    <Text style={styles.text6 }> {this.state.description1}</Text>
+                                    <Text style={styles.text6 }>ex : Etudiant en école d'ingénieur donne cours de maths et physique du collége au lycée
+                                        à Rabat {this.state.description1}</Text>
                                 </View>
                                 <View style={styles.container23 }>
-                                    <Text style={styles.text6 }> {this.state.description2}</Text>
+                                    <Text style={styles.text6 }> ex : Je suis ingénieur(e) / étudiant(e) / musicien(ne) .... je donne des cours depuis
+                                        ..... je suis diplomé(e){this.state.description2}</Text>
                                 </View>
                             </View>
                         </View>

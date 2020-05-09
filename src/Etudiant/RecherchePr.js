@@ -25,10 +25,18 @@ export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component
                             </View>
                             <View style={styles.container22 }>
                                 <Text style={styles.text5 }>100DH/H cours</Text>
-                                <Text style={styles.text5 }>4.2/5 (20avis)</Text>
+                                <Text style={styles.text5 }>En Groupe</Text>
                             </View>
                             <View style={styles.container23 }>
                                 <Text style={styles.text6 }>Description du professeur</Text>
+                            </View>
+                            <View style={styles.container23 }>
+                                <Text style={styles.text6 }>Methode d'enseignement</Text>
+                            </View>
+                            <View style={styles.container23 }>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('reviewDetails') } style={styles.ButtonStyle}>
+                                    <Text style={{fontSize : 18,color: 'white',fontWeight: 'bold', }}>Faire une demande</Text>
+                                </TouchableOpacity>
                             </View>
                         </View>
                         </View>
@@ -86,6 +94,7 @@ const styles = StyleSheet.create({
     container23: {
         flexDirection: 'row',
         width : '100%',
+        marginVertical : 5,
     },
     ImageView:{
         height: 130,
@@ -147,5 +156,17 @@ const styles = StyleSheet.create({
         height:'100%',
         marginHorizontal:5,
         marginLeft : 13 ,
+    },
+    ButtonStyle:{
+        backgroundColor: '#62A7A9',
+        borderRadius:10,
+        height : 50,
+        width : 250,
+        marginLeft : 40 ,
+        paddingLeft : 15,
+        paddingTop : 12,
+        marginBottom: 10,
+        alignItems : 'center',
+
     },
 });
