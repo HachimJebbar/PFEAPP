@@ -45,13 +45,7 @@ export default class Inscription extends Component {
                     numero: values.numero,
                     adresse : values.adresse,
                     ville : values.ville,
-                    annonces: {
-                        annonce : {
-                            matiere: "",
-                            public : "",
-                            prix : "",
-                        }
-                    },
+                    annonces: {},
 
                 });
                 Alert.alert('Action!', 'Your account is set');

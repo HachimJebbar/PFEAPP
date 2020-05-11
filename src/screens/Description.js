@@ -4,7 +4,7 @@ import {db} from '../FireBase/FireBase';
 
 
 
-export default class App extends Component {
+export default class Description extends Component {
     constructor(props) {
         super(props);
         const {state} = props.navigation;

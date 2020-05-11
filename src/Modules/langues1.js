@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-export default class langues extends React.Component {
+export default class langues1 extends React.Component {
     constructor(props){
         super(props);
         const {state} = props.navigation;
@@ -11,7 +11,7 @@ export default class langues extends React.Component {
         alert("Matière choisie!!!");
     };
     state  = {
-        langue: "",
+        langues1: "",
     };
     render(){
         return (

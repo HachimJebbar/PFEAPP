@@ -4,7 +4,7 @@ import {db} from '../FireBase/FireBase';
 
 
 
-export default class App extends Component {
+export default class tarif extends Component {
     constructor(props) {
         super(props);
         const {state} = this.props.navigation;
@@ -38,11 +38,12 @@ export default class App extends Component {
                     <Text style={styles.text1 }>Précisez le tarif d'une   </Text>
                     <Text style={styles.text1 }>heure de cours </Text>
                     <View style={styles.container2 }>
-                    <TextInput style={styles.input }
-                               placeholder="Tarif"
-                               onChangeText={data5 => this.setState({tarif: data5})}
-                    />
-                    <Text style={styles.text2 }>dh/h </Text>
+                        <TextInput style={styles.input }
+                                   placeholder="Tarif"
+                                   keyboardType={'numeric'}
+                                   onChangeText={data5 => this.setState({tarif: data5})}
+                        />
+                        <Text style={styles.text2 }>dh/h </Text>
                     </View>
                 </View>
                 <View>

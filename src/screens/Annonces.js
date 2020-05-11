@@ -10,8 +10,44 @@ import {
     CheckBox,
     TouchableHighlight
 } from 'react-native';
+import {auth, db} from "../FireBase/FireBase";
 
-export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
+export default class Annonces extends Component {
+    constructor(props) {
+        super(props);
+
+        const {state} = props.navigation;
+        this.state = {
+            data : {},
+            data2 : {}
+        };
+    }
+    GetData=(userData,change=()=>{this.setState({data:userData})}, userData2,change2=()=>{this.setState({data2:userData2})})=>{
+
+        let ref = db.ref("Annonces");
+        let user = auth.currentUser.uid;
+
+        ref.orderByChild("uid").equalTo(user).once("value",function (snapshot) {
+            snapshot.forEach(function (child) {
+                userData = child.val();
+                change();
+                let userid = userData.uid;
+                let ref1 = db.ref("users");
+                ref1.orderByChild("uid").equalTo(userid).once("value", function (snapshot) {
+                    snapshot.forEach(function (child) {
+                        userData2 = child.val();
+                        change2();
+                    })
+
+                })
+            })
+        })
+        };
+
+componentDidMount() {
+    this.GetData();
+}
+
     render() {
         return (
             <View style={styles.container}>
@@ -27,7 +63,11 @@ export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component
                                 <View style={styles.container21 }>
                                     <View style={styles.container212 }>
                                         <Image style={styles.ImageView} source={{uri: "https://reactnative.dev/img/tiny_logo.png"}} />
-                                        <Text style={styles.text3 }multine>100DH/H Matiere</Text>
+                                        <Text style={styles.text3 }multine>100DH/H {this.state.data.langue}</Text>
+                                    </View>
+                                    <View style={styles.container212 }>
+                                        <Image style={styles.ImageView} source={{uri: "https://reactnative.dev/img/tiny_logo.png"}} />
+                                        <Text style={styles.text3 }multine>{this.state.data2.ville}</Text>
                                     </View>
                                     <View style={styles.container211 }>
                                         <View style={{flexDirection:'row'} }>
@@ -35,27 +75,6 @@ export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component
 
                                         />
                                         <Text style={styles.text2 } >Publier</Text>
-                                        </View>
-                                        <TouchableHighlight style={[styles.buttonContainer, styles.modifier]} onPress={() => this.onClickListener('sign_up')}>
-                                            <Text style={styles.text5}>Modifier</Text>
-                                        </TouchableHighlight>
-                                    </View>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={styles.container1 }>
-                            <View style={styles.container2 }>
-                                <View style={styles.container21 }>
-                                    <View style={styles.container212 }>
-                                        <Image style={styles.ImageView} source={{uri: "https://reactnative.dev/img/tiny_logo.png"}} />
-                                        <Text style={styles.text3 }multine>100DH/H Matiere</Text>
-                                    </View>
-                                    <View style={styles.container211 }>
-                                        <View style={{flexDirection:'row'} }>
-                                            <CheckBox style={{ iconSize:'large'}}
-
-                                            />
-                                            <Text style={styles.text2 } >Publier</Text>
                                         </View>
                                         <TouchableHighlight style={[styles.buttonContainer, styles.modifier]} onPress={() => this.onClickListener('sign_up')}>
                                             <Text style={styles.text5}>Modifier</Text>

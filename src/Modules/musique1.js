@@ -6,6 +6,11 @@ export default class musique1 extends React.Component {
         super(props);
         const {state} = props.navigation;
     }
+    state =  {
+        musique : "",
+
+
+    };
     callFun = () =>
     {
         alert("Matière choisie!!!");
