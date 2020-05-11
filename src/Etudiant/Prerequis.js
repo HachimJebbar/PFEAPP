@@ -40,9 +40,9 @@ export default class RecherchePr extends React.Component {
                         <Text style={styles.text1 }>Matière "{this.state.data.Nom}"  </Text>
                         <Text style={styles.text2 } multine>Vous êtes en "nv scolaire" Vous devez disposer
                         des préreques suivantes pour qu'on puisse vous aidez à améliorer votre niveau :</Text>
-                        <Text style={styles.text3 }>-{this.state.data.Prerequis1}  </Text>
-                        <Text style={styles.text3 }>-{this.state.data.Prerequis2} </Text>
-                        <Text style={styles.text3 }>-{this.state.data.Prerequis3} </Text>
+                        <Text style={styles.text3 }>{this.state.data.Prerequis1}  </Text>
+                        <Text style={styles.text3 }>{this.state.data.Prerequis2} </Text>
+                        <Text style={styles.text3 }>{this.state.data.Prerequis3} </Text>
 
                     </TouchableOpacity>
 

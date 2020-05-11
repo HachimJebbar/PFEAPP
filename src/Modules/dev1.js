@@ -6,6 +6,11 @@ export default class dev1 extends React.Component {
         super(props);
         const {state} = props.navigation;
     }
+    state =  {
+        dev1 : "",
+
+
+    };
     callFun = () =>
     {
         alert("Matière choisie!!!");

@@ -1,27 +1,55 @@
+
 import React, { Component } from 'react';
-import { ScrollView, Image, Text, View, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { ScrollView, Image, Text, View, FlatList, TouchableOpacity, StyleSheet , Alert} from 'react-native';
+import {auth, db} from "../FireBase/FireBase";
+import * as firebase from "firebase";
 
 export default class annonce extends Component {
     constructor(props) {
         super(props);
-        const {state} = props.navigation;
-this.state = {
-    tarif : this.props.navigation.getParam('data5'),
-    type: this.props.navigation.getParam('data4'),
-    description2: this.props.navigation.getParam('data3'),
-    description1: this.props.navigation.getParam('data2'),
-    langue: this.props.navigation.getParam('data1'),
 
-};
+        const {state} = props.navigation;
+        this.state = {
+            tarif : this.props.navigation.getParam('data5'),
+            type: this.props.navigation.getParam('data4'),
+            description2: this.props.navigation.getParam('data3'),
+            description1: this.props.navigation.getParam('data2'),
+            langue: this.props.navigation.getParam('data1'),
+
+        };
+    }
+    AnnonceAjout=()=> {
+      let  tarif = this.state.tarif;
+          let  langue = this.state.langue;
+           let parcours = this.state.description1;
+          let  methodologie = this.state.description2;
+          let  cours = this.state.type;
+        let ref = db.ref("users");
+        let user = auth.currentUser.uid;
+
+        ref.orderByChild("uid").equalTo(user).once("value",function (snapshot) {
+            snapshot.forEach(function (child) {
+                let key = child.key;
+                db.ref('/Annonces').push({
+                    uid : user,
+                    tarif : tarif,
+                    langue : langue,
+                    parcours : parcours,
+                    methodologie : methodologie,
+                    cours : cours,
+                });
+            })
+
+
+        }).then(annonce => {
+        Alert.alert('Action!', 'Nouvelle annoce');
+
+        }).catch(error => this.setState({ error: error.message }))
     }
 
-
     render() {
-        console.log(this.state.type)
-        console.log(this.state.langue)
-        console.log(this.state.tarif)
-        console.log(this.state.description1)
-        console.log(this.state.description2)
+
+        
         return (
 
             <View style={styles.container}>
@@ -47,6 +75,10 @@ this.state = {
                                     <Text style={styles.text5 }>{this.state.tarif}100DH/H cours</Text>
                                     <Text style={styles.text5 }>{this.state.type}</Text>
                                 </View>
+                                <View style={styles.container22 }>
+                                    <Text style={styles.text5 }>Type Cours: {this.state.type}</Text>
+
+                                </View>
                                 <View style={styles.container23 }>
                                     <Text style={styles.text6 }>ex : Etudiant en école d'ingénieur donne cours de maths et physique du collége au lycée
                                         à Rabat {this.state.description1}</Text>
@@ -58,7 +90,7 @@ this.state = {
                             </View>
                         </View>
                         <View>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('reviewDetails') } style={styles.ButtonStyle}>
+                            <TouchableOpacity onPress={() => this.AnnonceAjout() } style={styles.ButtonStyle}>
                                 <Text style={{fontSize : 18,color: 'white',fontWeight: 'bold', }}>Valider</Text>
                             </TouchableOpacity>
                         </View>

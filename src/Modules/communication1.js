@@ -1,16 +1,16 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-export default class communicationPro extends React.Component {
+export default class communication1 extends React.Component {
     constructor(props){
         super(props);
         const {state} = props.navigation;
     }
     state =  {
-communication : "",
+        communication : "",
 
 
-};
+    };
 
     callFun = () =>
     {

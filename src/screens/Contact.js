@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {View, TextInput, Text, CheckBox, TouchableOpacity, StyleSheet, Alert} from 'react-native';
 import {db} from "../FireBase/FireBase";
 
+
 export default class Contact extends Component{
 
     constructor(props){

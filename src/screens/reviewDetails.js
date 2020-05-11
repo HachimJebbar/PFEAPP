@@ -12,8 +12,6 @@ this.state = {
     langue: props.navigation.getParam('data1'),
     type: "",
 };
-        
-
     }
 
 render(){
@@ -29,11 +27,11 @@ render(){
             <Text style={styles.text1 }> souhaitez-vous donner ?  </Text>
             </View>
             <View style={styles.container2}>
-            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('tarif', {data4:'En Groupe'})} >
+            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('tarif',  {data1:this.state.langue, data2:this.state.description1, data3:this.state.description2, data4:'En Groupe' })} >
                 <Image source={require('../../assets/Images/grp.gif')} style = {styles.ImageView} />
                 <Text style={styles.text2 }> En Groupe  </Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('tarif', {data4:'Individuel'})} >
+            <TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('tarif',  {data1:this.state.langue, data2:this.state.description1, data3:this.state.description2, data4:'Individuel'})} >
                 <Image source={require('../../assets/Images/ind.gif')} style = {styles.ImageView} />
                 <Text style={styles.text2 }> Individuel  </Text>
             </TouchableOpacity>
