@@ -2,6 +2,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Header from "../shared/header";
+import HeaderNone from "../shared/headerNone";
 import React from 'react';
 import Demandes from "../screens/Demandes";
 import detailsdemande from  "../screens/detailsdemande"
@@ -18,7 +19,7 @@ const screens = {
         screen: detailsdemande,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header navigation={navigation} title='demandes'/>,
+                headerTitle: () => <HeaderNone navigation={navigation} title='demandes'/>,
             }
         }
     },

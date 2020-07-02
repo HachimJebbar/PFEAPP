@@ -26,9 +26,7 @@ const RootDrawerNavigator = createDrawerNavigator({
     Demandes: {
         screen: DemandesStack,
     },
-    Contact:{
-        screen:AnnoncesStack,
-    },
+
 },{
     contentComponent: (props) => (
 

@@ -7,7 +7,7 @@ import {
     Button,
     TouchableHighlight,
     Image,
-    Alert, Animated, TouchableOpacity, ScrollView
+    Alert, Animated, TouchableOpacity, ScrollView,Picker
 } from 'react-native';
 import {auth, db} from "../FireBase/FireBase";
 import * as yup from "yup";
@@ -30,12 +30,13 @@ export default class Inscription extends Component {
             showFirst:'show',
             secureTextEntrySecond:true,
             showSecond:'show',
+            cities:[],
+            cityChosen:'',
 
         };
     }
     signUpUser = (values, props) => {
-        console.log(values);
-        props = this.props;
+        let ville= this.state.cityChosen;
         if (values.password === values.repeatpassword){
             auth.createUserWithEmailAndPassword(values.email, values.password).then(user => {
                 db.ref('/users').push({
@@ -44,9 +45,8 @@ export default class Inscription extends Component {
                     nom_complet: values.nom_complet,
                     numero: values.numero,
                     adresse : values.adresse,
-                    ville : values.ville,
+                    ville : ville,
                     annonces: {},
-
                 });
                 Alert.alert('Action!', 'Your account is set');
             }).catch(error => this.setState({ error: error.message }))
@@ -55,7 +55,21 @@ export default class Inscription extends Component {
         }
 
     };
+    getCities=(Change=(Data)=>{this.setState({cities:Data})})=> {
+        let ref = db.ref("/cities");
+        let query = ref.orderByKey();
+        query.once("value", function (snapshot) {
+            let Data = snapshot.val();
+            Change(Data);
+        });
+    };
+    OnSelectCity=(e)=>{
+        this.setState({cityChosen:e});
 
+    };
+    componentDidMount() {
+        this.getCities();
+    }
 
     render() {
         const Check = yup.object({
@@ -64,22 +78,8 @@ export default class Inscription extends Component {
             password: yup.string().required().max(40).min(8),
             repeatpassword: yup.string().required().max(40).min(8),
         });
-        const secureTextEntryFirst = () => {
-            if (this.state.secureTextEntryFirst) {
-                this.setState({secureTextEntryFirst: false, showFirst: 'hide'})
-            }
-            if (!this.state.secureTextEntryFirst) {
-                this.setState({secureTextEntryFirst: true, showFirst: 'show'})
-            }
-        };
-        const secureTextEntrySecond = () => {
-            if (this.state.secureTextEntrySecond) {
-                this.setState({secureTextEntrySecond: false, showSecond: 'hide'})
-            }
-            if (!this.state.secureTextEntrySecond) {
-                this.setState({secureTextEntrySecond: true, showSecond: 'show'})
-            }
-        };
+
+        let keyCity= Object.keys(this.state.cities);
         return (
             <ScrollView>
 
@@ -192,14 +192,20 @@ export default class Inscription extends Component {
                                 </View>
                                 <View style={styles.inputContainer}>
 
-                                    <TextInput style={styles.inputs}
-                                               onChangeText={props.handleChange('ville')}
-                                               value={props.values.ville}
-                                               onBlur={props.handleBlur('ville')}
-                                               placeholder="Ville"
-                                               underlineColorAndroid="transparent"
-                                               placeholderTextColor="#a9a9a1"
-                                               autoCapitalize="none"/>
+                                    <Picker style={styles.inputPicker}
+                                            selectedValue={this.state.cityChosen}
+                                            onValueChange={e => this.OnSelectCity(e)}
+                                            mode="dropdown"
+                                    >
+
+                                        {
+                                            keyCity.map((key)=>{
+                                                let Data =this.state.cities[key];
+                                                return(<Picker.Item label={Data.City} value={Data.City}/>
+                                                )
+                                            })
+                                        }
+                                    </Picker>
                                 </View>
 
 
@@ -210,8 +216,9 @@ export default class Inscription extends Component {
                                                             onPress={props.handleSubmit} >
                                             <Text style={styles.signUpText}>S'inscrire</Text>
                                         </TouchableHighlight>
-                                        <Text style={styles.registerHere} onPress={() => this.props.CloseModal()}>Sign in here</Text>
                                     </View>
+                                    <Text style={styles.registerHere} onPress={() => this.props.CloseModal()}>Vous avez un compte ?Connectez-vous</Text>
+
                                 </View>
 
                             </View>
@@ -265,6 +272,12 @@ const styles = StyleSheet.create({
         marginLeft:15,
         justifyContent: 'center'
     },
+    inputPicker: {
+        flexDirection: 'row',
+        borderColor: '#a9a9a1',
+        borderBottomWidth: 1,
+        width:370,
+    },
     buttonContainer: {
         height:45,
         // flexDirection: 'row',
@@ -276,26 +289,21 @@ const styles = StyleSheet.create({
     },
     signupButton: {
         backgroundColor: "#62A7A9",
-        marginLeft : '14%' ,
+        marginLeft : '10%' ,
         width : 280,
     },
     signUpText: {
         color: 'white',
     },
-    signupFButton: {
-        backgroundColor: "#4267B2",
-        width : 140,
-    },
-    signupGButton: {
-        backgroundColor: "#DB4437",
-        width : 140,
-    },
     text: {
         color: '#62A7A9',
         fontSize: 40,
         fontWeight: 'bold',
-
-
+    },
+    registerHere : {
+        color: '#62A7A9',
+        fontWeight: 'bold',
+        marginLeft : '14%' ,
     },
     container2 : {
         flexDirection: 'row',

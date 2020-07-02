@@ -41,7 +41,6 @@ export default class Profile extends React.Component {
 						</View>
 						<View style={styles.container22}>
 							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('diplome')} >
-
 								<Image source={require('../../assets/Images/diplome.png')} style = {styles.ImageView1} />
 								<Text style={styles.text }>Diplome</Text>
 							</TouchableOpacity>
@@ -50,7 +49,6 @@ export default class Profile extends React.Component {
 					<View style={styles.container3}>
 						<View style={styles.container31}>
 							<TouchableOpacity activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('identite')} >
-
 								<Image source={require('../../assets/Images/identite.png')} style = {styles.ImageView1} />
 								<Text style={styles.text }>Identité</Text>
 							</TouchableOpacity>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component}  from 'react';
 import {
     ScrollView,
     Image,
@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
     StyleSheet,
     CheckBox,
-    TouchableHighlight
+    TouchableHighlight,RefreshControl
 } from 'react-native';
 import {auth, db} from "../FireBase/FireBase";
 
@@ -16,10 +16,12 @@ export default class Annonces extends Component {
     constructor(props) {
         super(props);
 
+
         const {state} = props.navigation;
         this.state = {
-            data : {},
-            data2 : {}
+            data : [],
+            data2 : {},
+            refreshing:false
         };
     }
     GetData=(userData,change=()=>{this.setState({data:userData})}, userData2,change2=()=>{this.setState({data2:userData2})})=>{
@@ -29,66 +31,86 @@ export default class Annonces extends Component {
 
         ref.orderByChild("uid").equalTo(user).once("value",function (snapshot) {
             snapshot.forEach(function (child) {
-                userData = child.val();
+                userData = snapshot.val();
                 change();
-                let userid = userData.uid;
-                let ref1 = db.ref("users");
-                ref1.orderByChild("uid").equalTo(userid).once("value", function (snapshot) {
-                    snapshot.forEach(function (child) {
-                        userData2 = child.val();
-                        change2();
-                    })
-
-                })
             })
         })
-        };
+    };
+    changeCheckBox=(key,active)=>{
+        console.log('activeactiveactive',active);
+        db.ref('Annonces/'+key).update({
+            active: active,
+        });
+        this.GetData();
+    };
 
-componentDidMount() {
-    this.GetData();
-}
+    componentDidMount() {
 
-    render() {
+        this.GetData();
+    }
+
+    CardList = ({Annonces: {uid,cours, langue, methodologie, parcours,tarif,active}, IdAnnonces}) => {
         return (
-            <View style={styles.container}>
-                <ScrollView>
+                    <View style={styles.container2 }>
+                        <View style={styles.container21 }>
+                            <View style={styles.container212 }>
+                                <Text style={styles.text3 }>{langue}</Text>
+                            </View>
+                            <View style={styles.container211 }>
+                                <View style={{flexDirection:'row'} }>
 
-                    <TouchableOpacity >
-                        <Text style={styles.text1 } multine>Mes Annonces</Text>
-                    </TouchableOpacity>
+                                    <Text style={styles.text2 }>Publier </Text>
+                                    <CheckBox style={{ iconSize:'large'}}
+                                              value={active}
+                                              onValueChange={(e)=>this.changeCheckBox(IdAnnonces,e)}
 
-                    <ScrollView>
-                        <View style={styles.container1 }>
-                            <View style={styles.container2 }>
-                                <View style={styles.container21 }>
-                                    <View style={styles.container212 }>
-                                        <Image style={styles.ImageView} source={{uri: "https://reactnative.dev/img/tiny_logo.png"}} />
-                                        <Text style={styles.text3 }multine>100DH/H {this.state.data.langue}</Text>
-                                    </View>
-                                    <View style={styles.container212 }>
-                                        <Image style={styles.ImageView} source={{uri: "https://reactnative.dev/img/tiny_logo.png"}} />
-                                        <Text style={styles.text3 }multine>{this.state.data2.ville}</Text>
-                                    </View>
-                                    <View style={styles.container211 }>
-                                        <View style={{flexDirection:'row'} }>
-                                        <CheckBox style={{ iconSize:'large'}}
-
-                                        />
-                                        <Text style={styles.text2 } >Publier</Text>
-                                        </View>
-                                        <TouchableHighlight style={[styles.buttonContainer, styles.modifier]} onPress={() => this.onClickListener('sign_up')}>
-                                            <Text style={styles.text5}>Modifier</Text>
-                                        </TouchableHighlight>
-                                    </View>
+                                    />
                                 </View>
                             </View>
                         </View>
-                    </ScrollView>
-                    <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('HomeProf') } >
-                        <Text style={{fontWeight: 'bold',fontSize : 50,color: '#fff' }}>+</Text>
-                    </TouchableOpacity>
+                    </View>
 
+
+        )
+    };
+
+    onRefresh() {
+        this.setState({refreshing: false,data:[]});
+        this.GetData();
+    }
+    render() {
+        let keys = Object.keys(this.state.data);
+
+        return (
+
+            <View style={styles.container}>
+                <ScrollView     refreshControl={
+                    <RefreshControl
+
+                        refreshing={this.state.refreshing}
+                        onRefresh={this.onRefresh.bind(this)}
+                    />
+                }>
+
+                    {
+                        keys.length > 0
+                            ? keys.map((key) => {
+                                return (
+
+                                    <View  key={key}>
+                                        <this.CardList
+                                            Annonces={this.state.data[key]}
+                                            IdAnnonces={key}
+                                        />
+                                    </View>
+                                )
+                            })
+                            : <View ><Text style={styles.dirannonce }>Créer Votre Annonce et devenez Prof</Text></View>
+                    }
                 </ScrollView>
+                <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('HomeProf') } >
+                    <Text style={{fontWeight: 'bold',fontSize : 50,color: '#fff' }}>+</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -102,33 +124,26 @@ const styles = StyleSheet.create({
         backgroundColor:  '#fff',
         position : 'relative'
     },
-    container1: {
-        flexDirection: 'row',
-        height : '50%',
-    },
     container2: {
         flexDirection: 'column',
-        marginLeft : 40 ,
-        marginVertical:20,
         backgroundColor:  '#F5F1F1',
-        marginRight:40,
-        height: '70%',
+        marginLeft : 30 ,
+        marginVertical:20,
+        marginBottom : 15 ,
+        width : '90%',
     },
     container21: {
         flexDirection: 'row',
-        marginVertical : '5%' ,
-        width : '70%',
-        height : '100%' ,
-        borderRadius:50,
+        width : '80%',
     },
     container211: {
         flexDirection: 'column',
-        width : '70%',
+        width : '50%',
         marginLeft:100,
     },
     container212: {
         flexDirection: 'column',
-        width : '35%',
+        width : '50%',
     },
     ImageView:{
         height: 70,
@@ -144,26 +159,10 @@ const styles = StyleSheet.create({
         marginLeft : 40 ,
     },
     text3 : {
-        fontSize : 15,
-        color : '#AFA5A5',
-        marginBottom : 10 ,
-        marginTop : 15 ,
-        fontWeight: 'bold',
-        marginLeft : 15 ,
-    },
-    text5 : {
+        marginLeft : 20 ,
         fontSize : 19,
         color : '#AFA5A5',
-        marginBottom : 10 ,
         fontWeight: 'bold',
-        borderWidth : 3,
-        borderRadius:20,
-        borderColor: '#fff',
-        padding:11,
-        width : '60%',
-        marginHorizontal:5,
-        marginLeft : 5 ,
-        marginTop: 20,
     },
     text2 : {
         fontSize : 19,
@@ -183,5 +182,13 @@ const styles = StyleSheet.create({
         textAlign : 'center',
         alignItems : 'center',
 
+    },
+    dirannonce : {
+        marginTop : '50%',
+        fontSize : 30,
+        color : '#AFA5A5',
+        fontWeight: 'bold',
+        textAlign : 'center',
+        alignItems : 'center',
     },
 });

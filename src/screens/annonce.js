@@ -15,9 +15,24 @@ export default class annonce extends Component {
             description2: this.props.navigation.getParam('data3'),
             description1: this.props.navigation.getParam('data2'),
             langue: this.props.navigation.getParam('data1'),
+            userData:{}
 
         };
     }
+    getUserData=(Change=(Data)=>this.setState({userData:Data}))=>{
+        let uid= auth.currentUser.uid;
+        db.ref("users").orderByChild("uid").equalTo(uid)
+            .once("value",function (snapshot) {
+                snapshot.forEach(function (child) {
+                    let Data= child.val();
+                    Change(Data);
+                })
+            })
+    };
+    componentDidMount() {
+        this.getUserData();
+    }
+
     AnnonceAjout=()=> {
       let  tarif = this.state.tarif;
           let  langue = this.state.langue;
@@ -25,6 +40,7 @@ export default class annonce extends Component {
           let  methodologie = this.state.description2;
           let  cours = this.state.type;
         let ref = db.ref("users");
+        let ville = this.state.userData;
         let user = auth.currentUser.uid;
 
         ref.orderByChild("uid").equalTo(user).once("value",function (snapshot) {
@@ -72,7 +88,7 @@ export default class annonce extends Component {
                                     </View>
                                 </View>
                                 <View style={styles.container22 }>
-                                    <Text style={styles.text5 }>{this.state.tarif}100DH/H cours</Text>
+                                    <Text style={styles.text5 }>{this.state.tarif}DH/H cours</Text>
                                     <Text style={styles.text5 }>{this.state.type}</Text>
                                 </View>
                                 <View style={styles.container22 }>
@@ -80,12 +96,10 @@ export default class annonce extends Component {
 
                                 </View>
                                 <View style={styles.container23 }>
-                                    <Text style={styles.text6 }>ex : Etudiant en école d'ingénieur donne cours de maths et physique du collége au lycée
-                                        à Rabat {this.state.description1}</Text>
+                                    <Text style={styles.text6 }>ex :  {this.state.description1}</Text>
                                 </View>
                                 <View style={styles.container23 }>
-                                    <Text style={styles.text6 }> ex : Je suis ingénieur(e) / étudiant(e) / musicien(ne) .... je donne des cours depuis
-                                        ..... je suis diplomé(e){this.state.description2}</Text>
+                                    <Text style={styles.text6 }> ex : {this.state.description2}</Text>
                                 </View>
                             </View>
                         </View>

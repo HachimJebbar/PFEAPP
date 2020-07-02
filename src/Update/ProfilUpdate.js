@@ -13,19 +13,23 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as  ImagePicker from 'expo-image-picker';
-
+import {auth, db, storage} from "../FireBase/FireBase";
 export default class ProfilUp extends Component{
-    state= {
-        images: [],
-        imageName: "",
-    }
+
     constructor(props) {
         super(props);
         const {state} = props.navigation;
+        this.state= {
+            images: [],
+            profileImage:"",
+            imageName: "",
+            imageURL:"",
+            userKey:'',
+        }
     }
-    handleDelete = imageUri => {
-        const images = this.state.images.filter(image => image.uri !== imageUri);
-        this.setState({ images: images });
+    handleDelete = () => {
+        let userKey=this.state.userKey;
+        db.ref('users/' + userKey).update({PDP: ""}).then(r  =>{this.getUserKey();alert("Image deleted")});
     };
     onChooseImagePress = async () => {
         if (Object.keys(this.state.images).length === 1){
@@ -34,11 +38,60 @@ export default class ProfilUp extends Component{
             Alert.alert("Attention!!", "Please give the image a name before uploading it..");
         }else{
             let result = await ImagePicker.launchImageLibraryAsync();
-            this.state.images.push({uri: result.uri, name: this.state.imageName});
-            this.setState({imageName: ""})
+            if (result.type === 'image'){
+                this.setState({imageURL:result.uri});
+            }else
+            {
+                Alert.alert("Attention!!", "Please Image format only");
+            }
+
         }
     };
+    componentDidMount() {
+        this.getUserKey();
+    }
+    getUserKey=(Change=(userKey)=>this.setState({userKey:userKey}))=>{
+        let uid= auth.currentUser.uid;
+        db.ref("users").orderByChild("uid").equalTo(uid)
+            .once("value",function (snapshot) {
+                snapshot.forEach(function (child) {
+                    let Data= child.val();
+                    Change(child.key);
+                    getImage(Data.PDP);
+                })
+            });
+        const getImage= async (dataImage) => {
+            if (dataImage === "" || dataImage === undefined || dataImage === null){
+                let ref = storage.ref('UserImage/PDP.jpg');
+                let url = await ref.getDownloadURL();
+                this.setState({profileImage:url})
+            }else {
+                let ref = storage.ref('UserImage/'+uid+'/'+dataImage);
+                let url = await ref.getDownloadURL();
+                this.setState({profileImage:url})
+            }
+        };
+    };
+
+    uploadImage = async (uri) => {
+        /**
+         * @return {string}
+         */
+        const S4 = ()=> {
+            return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+        };
+        let uid= auth.currentUser.uid;
+        //ajouter
+        let imageNumber =(S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+        let userKey= this.state.userKey;
+        const response = await fetch(uri);
+        const blob = await response.blob();
+        let ref = storage.ref().child("UserImage/"+uid+"/"+imageNumber);
+        db.ref('users/'+userKey).update({PDP:imageNumber});
+        return ref.put(blob);
+    };
     render() {
+        let uri =this.state.profileImage;
         return (
             <View style={styles.container}>
                 <Text style={styles.text1 }> Votre Profil !!</Text>
@@ -60,29 +113,13 @@ export default class ProfilUp extends Component{
                 </View>
                 <Text style={{fontSize: 15,marginLeft:140,marginTop:10}}>Documents (max: 1)</Text>
                 <View>
-                    {
-                        Object.keys(this.state.images).length   === 0 ? <View style={{marginTop: 8}}><Text style={{opacity: 0.4,marginLeft:133,}}>No documents uploaded</Text></View>
-                            :
-                            this.state.images.map((image) => {
-                                return (
-                                    <View style={styles.documentsAdded} key={image.uri}>
-                                        <View style={styles.container21}>
-                                        <Text style={styles.NomImage}>{image.name}</Text>
-                                        <Icon  onPress={() => this.handleDelete(image.uri)} name="trash" size={24} color="#fff" style={styles.icon} />
-                                        </View>
-                                        {image && (
-                                            <Image
-                                                source={{ uri: image.uri }}
-                                                style={{borderRadius:500,flexDirection: 'row',width: '45%', height: '58%',marginLeft:'33%',}}
-                                            />
-                                        )}
-                                    </View>
-                                )
-                            })
-                    }
+                    <Image
+                        source={{ uri: uri}}
+                        style={{borderRadius:500,flexDirection: 'row',width: '45%', height: '58%',marginLeft:'25%',}}
+                    />
                 </View>
                 <View style={styles.container3}>
-                    <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('pdp')} >
+                    <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => {this.uploadImage(this.state.imageURL).then(r => {this.getUserKey();alert("Image Set")})}} >
                         <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Confirmer </Text>
                     </TouchableOpacity>
                 </View>
@@ -197,8 +234,8 @@ const styles = StyleSheet.create({
         borderWidth:2,
         borderRadius:10,
         height : 50,
-        width : 270,
-        marginLeft : 70 ,
+        width : 250,
+        marginLeft : '20%' ,
         paddingLeft : 15,
         paddingTop : 12,
         marginBottom: 10,

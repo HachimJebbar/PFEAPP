@@ -8,54 +8,98 @@ import {
     TouchableOpacity,
     StyleSheet,
     CheckBox,
-    TouchableHighlight
+    TouchableHighlight, RefreshControl
 } from 'react-native';
+import {auth, db} from "../FireBase/FireBase";
 
-export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
-    render() {
+export default class Demandes extends Component {
+    constructor(props) {
+        super(props);
+
+
+        const {state} = props.navigation;
+        this.state = {
+            data : [],
+            data2 : {},
+            refreshing:false
+        };
+    }
+    GetData=(userData,change=()=>{this.setState({data:userData})}, userData2,change2=()=>{this.setState({data2:userData2})})=>{
+
+        let ref = db.ref("Annonces");
+        let user = auth.currentUser.uid;
+
+        ref.orderByChild("uid").equalTo(user).once("value",function (snapshot) {
+            snapshot.forEach(function (child) {
+                userData = snapshot.val();
+                change();
+            })
+        })
+    };
+    componentDidMount() {
+
+        this.GetData();
+    }
+
+    CardList = ({Annonces: {uid,cours, langue, methodologie, parcours,tarif,active}, IdAnnonces}) => {
         return (
             <View style={styles.container}>
                 <ScrollView>
-
-                    <TouchableOpacity >
-                        <Text style={styles.text1 } multine>Mes Annonces</Text>
-                    </TouchableOpacity>
-
-                    <ScrollView>
-                        <View style={styles.container1 }>
                             <View style={styles.container2 }>
                                 <View style={styles.container21 }>
                                     <View style={styles.container212 }>
                                         <Image style={styles.ImageView} source={{uri: "https://reactnative.dev/img/tiny_logo.png"}} />
-                                        <Text style={styles.text3 }multine>     PHP</Text>
+                                        <Text style={styles.text3 }>{langue}</Text>
                                     </View>
                                     <View style={styles.container211 }>
 
-                                        <TouchableOpacity style={[styles.buttonContainer, styles.modifier]} onPress={() => this.props.navigation.navigate('detailsdemande')}>
+                                        <TouchableOpacity style={[styles.buttonContainer, styles.modifier]} onPress={() => this.props.navigation.navigate('detailsdemande',{
+                                            idMatiere:langue,
+                                        })}>
                                             <Text style={styles.text5}>Afficher les demandes</Text>
                                         </TouchableOpacity>
                                     </View>
                                 </View>
                             </View>
-                        </View>
-                        <View style={styles.container1 }>
-                            <View style={styles.container2 }>
-                                <View style={styles.container21 }>
-                                    <View style={styles.container212 }>
-                                        <Image style={styles.ImageView} source={{uri: "https://reactnative.dev/img/tiny_logo.png"}} />
-                                        <Text style={styles.text3 }multine>    JAVA</Text>
-                                    </View>
-                                    <View style={styles.container211 }>
 
-                                        <TouchableHighlight style={[styles.buttonContainer, styles.modifier]} onPress={() => this.onClickListener('sign_up')}>
-                                            <Text style={styles.text5}>Afficher les demandes</Text>
-                                        </TouchableHighlight>
-                                    </View>
-                                </View>
-                            </View>
-                        </View>
-                    </ScrollView>
+                </ScrollView>
+            </View>
+        );
+    }
 
+    onRefresh() {
+        this.setState({refreshing: false,data:[]});
+        this.GetData();
+    }
+    render() {
+        let keys = Object.keys(this.state.data);
+
+        return (
+
+            <View style={styles.container}>
+                <ScrollView     refreshControl={
+                    <RefreshControl
+
+                        refreshing={this.state.refreshing}
+                        onRefresh={this.onRefresh.bind(this)}
+                    />
+                }>
+
+                    {
+                        keys.length > 0
+                            ? keys.map((key) => {
+                                return (
+
+                                    <View  key={key}>
+                                        <this.CardList
+                                            Annonces={this.state.data[key]}
+                                            IdAnnonces={key}
+                                        />
+                                    </View>
+                                )
+                            })
+                            : <View ><Text style={styles.dirannonce }>Vous n'avez reçu aucune demande</Text></View>
+                    }
                 </ScrollView>
             </View>
         );
@@ -139,5 +183,12 @@ const styles = StyleSheet.create({
         marginVertical:3,
         fontWeight: 'bold',
     },
-
+    dirannonce : {
+        marginTop : '50%',
+        fontSize : 30,
+        color : '#AFA5A5',
+        fontWeight: 'bold',
+        textAlign : 'center',
+        alignItems : 'center',
+    },
 });

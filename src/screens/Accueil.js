@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Platform, StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity} from 'react-native';
 
-export default class Profile extends React.Component {
+export default class Accueil extends React.Component {
     constructor(props){
         super(props);
     }

@@ -4,9 +4,9 @@ import Header from "../shared/header";
 import React from 'react';
 import infoupdate from "../Update/infoupdate";
 import ProfilUpdate from "../Update/ProfilUpdate";
-//import adresseupdate from  "../Update/adresseupdate";
-//import diplome from "../Update/diplome";
-//import identite from "../Update/identite";
+import adresseupdate from  "../Update/adresseupdate";
+import diplome from "../Update/diplome";
+import identite from "../Update/identite";
 import mdpupdate from "../Update/mdpupdate";
 import HeaderNone from "../shared/headerNone";
 const screens = {
@@ -27,30 +27,30 @@ const screens = {
         }
     }
         },
-    /*adresseupdate: {
+    adresseupdate: {
         screen: adresseupdate,
         navigationOptions: ({ navigation }) => {
             return {
                 headerTitle: () => <HeaderNone navigation={navigation} title='Adresse'/>,
             }
         }
-    },*/
-    /*diplome: {
+    },
+    diplome: {
         screen: diplome,
         navigationOptions: ({ navigation }) => {
             return {
                 headerTitle: () => <HeaderNone navigation={navigation} title='Diplome'/>,
             }
         }
-    },*/
-    /*identite: {
+    },
+    identite: {
         screen: identite ,
         navigationOptions: ({ navigation }) => {
             return {
                 headerTitle: () => <HeaderNone navigation={navigation} title='Identité'/>,
             }
         }
-    },*/
+    },
     infoupdate: {
         screen: infoupdate,
         navigationOptions: ({ navigation }) => {

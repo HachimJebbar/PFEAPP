@@ -12,53 +12,53 @@ export default class dev extends React.Component {
     };
     render(){
         return (
-        <View style={styles.container}>
-            <Text style={styles.text1 }>Liste des matières populaires : </Text>
+            <View style={styles.container}>
+                <Text style={styles.text1 }>Liste des matières populaires : </Text>
 
 
-            <ScrollView>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'ALGORITHME'})}>
-                    <Text style={styles.text5 }>ALGORITHME</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'C'})}>
-                    <Text style={styles.text5 }>PROGRAMMATION C</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'JAVASCRIPT'})}>
-                    <Text style={styles.text5 }>JAVASCRIPT</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'REACT_NATIVE'})}>
-                    <Text style={styles.text5 }>REACT NATIVE</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'PHP'})}>
-                    <Text style={styles.text5 }>PHP</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'LARAVEL'})}>
-                    <Text style={styles.text5 }>LARAVEL</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'MYSQL'})}>
-                    <Text style={styles.text5 }>MYSQL</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'FIREBASE'})}>
-                    <Text style={styles.text5 }>FIREBASE</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'ANGULAR'})}>
-                    <Text style={styles.text5 }>ANGULAR</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'JAVA'})}>
-                    <Text style={styles.text5 }>JAVA</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'HTML'})}>
-                    <Text style={styles.text5 }>HTML</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'CSS'})}>
-                    <Text style={styles.text5 }>CSS</Text>
-                </TouchableOpacity>
-            </ScrollView>
+                <ScrollView>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'ALGORITHME'})}>
+                        <Text style={styles.text5 }>ALGORITHME</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'C'})}>
+                        <Text style={styles.text5 }>PROGRAMMATION C</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'JAVASCRIPT'})}>
+                        <Text style={styles.text5 }>JAVASCRIPT</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'REACT_NATIVE'})}>
+                        <Text style={styles.text5 }>REACT NATIVE</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'PHP'})}>
+                        <Text style={styles.text5 }>PHP</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'LARAVEL'})}>
+                        <Text style={styles.text5 }>LARAVEL</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'MYSQL'})}>
+                        <Text style={styles.text5 }>MYSQL</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'FIREBASE'})}>
+                        <Text style={styles.text5 }>FIREBASE</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'ANGULAR'})}>
+                        <Text style={styles.text5 }>ANGULAR</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'JAVA'})}>
+                        <Text style={styles.text5 }>JAVA</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'HTML'})}>
+                        <Text style={styles.text5 }>HTML</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Prerequis', {data1:'CSS'})}>
+                        <Text style={styles.text5 }>CSS</Text>
+                    </TouchableOpacity>
+                </ScrollView>
 
-        </View>
-    );
+            </View>
+        );
     }
-    
+
 }
 
 const styles = StyleSheet.create({

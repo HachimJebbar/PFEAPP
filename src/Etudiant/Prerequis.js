@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import {StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Image, TextInput} from 'react-native';
+import {StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Image, TextInput, Picker} from 'react-native';
 import * as firebase from "firebase";
+import {auth, db} from "../FireBase/FireBase";
+import Modal from "react-native-modal";
 
 
 
@@ -13,6 +15,12 @@ export default class RecherchePr extends React.Component {
     state  = {
         langue: this.props.navigation.getParam('data1'),
         data: {},
+        cities:[],
+        cityChosen:'All',
+        visible:false,
+        cityExist:true,
+        annonceExist:true,
+        error:'',
     };
 
     MatiereDetails = (Data, Change=()=> this.setState({data:Data})) => {
@@ -26,20 +34,105 @@ export default class RecherchePr extends React.Component {
         });
     };
     componentDidMount() {
-        this.MatiereDetails() ;
+        this.MatiereDetails();
+        this.getCities();
+        const { navigation } = this.props;
+        this.focusListener = navigation.addListener('didFocus', () => {
+            this.setState({ error:''});
+
+        });
     };
-    render(){
+    OnSelectCity=(e)=>{
+        this.setState({cityChosen:e});
+    };
+    getCities=(Change=(Data)=>{this.setState({cities:Data})})=> {
+        let ref = db.ref("/cities");
+        let query = ref.orderByKey();
+        query.once("value", function (snapshot) {
+            let Data = snapshot.val();
+            Change(Data);
+        });
+    };
+    showModal = () => this.setState({visible: true});
+    hideModal = () => this.setState({visible: false});
+    checkVilleProf=(Change=()=>this.setState({cityExist:false}),Change2=()=>this.setState({annonceExist:false}),
+                    Change3=()=>this.setState({cityExist:true}) )=>{
+        let cityChosen=this.state.cityChosen;
+        db.ref('users').orderByKey()
+            .once("value", function (snapshot) {
+                if (snapshot.exists()){
+                    snapshot.forEach(function (child) {
+                        let Data = child.val();
+                        if (Data.ville === cityChosen) {
+                            Change3();
+                            db.ref('Annonces').orderByChild("uid").equalTo(Data.uid)
+                                .once("value", function (snapshot) {
+                                    if (snapshot.exists()) {
+                                        check();
+                                        return check();
+                                    } else {
+                                        Change2();
+                                    }
+                                })
+                        }else {
+                            Change()
+                        }
+                    })
+                }
+            }).then(r =>{
+            if (!this.state.cityExist && !this.state.annonceExist){
+                this.setState({error:'Cette ville est hors service pour le moment'})
+            }else if (this.state.cityExist && !this.state.annonceExist){
+                this.setState({error:'Les annonces ne sont pas disponible pour le moment'})
+            }
+        });
+        const check=()=>{
+            this.props.navigation.navigate('RecherchePr', {data1 : this.state.langue,cityChosen:this.state.cityChosen})
+        };
+
+    };
+     render(){
         //let Nom = this.state.data ;
         //let Prerequis1 = this.state.data ;
         //let Prerequis2 = this.state.data ;
         //let Prerequis3 = this.state.data ;
+        let keyCity= Object.keys(this.state.cities);
         return (
             <View style={styles.container}>
                 <View style={styles.container0}>
+
+                    <Modal
+                        animated
+                        animationType="fade"
+                        isVisible={this.state.visible}
+                        style={styles.modal}
+                        onBackdropPress={()=>this.hideModal()}>
+                        <Text style={styles.text3 }>Filtrer par ville</Text>
+                        <Picker style={styles.inputPicker}
+                                selectedValue={this.state.cityChosen}
+                                onValueChange={e => this.OnSelectCity(e)}
+                                mode="dropdown"
+                        >
+                            <Picker.Item label="All" value="All"/>
+                            {
+                                keyCity.map((key)=>{
+                                    let Data =this.state.cities[key];
+                                    return(<Picker.Item label={Data.City} value={Data.City}/>
+                                    )
+                                })
+                            }
+                        </Picker>
+                        <View style={styles.container1}>
+                            <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => {this.checkVilleProf();this.hideModal()}} >
+                                <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Confirmer</Text>
+                            </TouchableOpacity>
+
+                        </View>
+                    </Modal>
                     <TouchableOpacity >
                         <Text style={styles.text1 }>Matière "{this.state.data.Nom}"  </Text>
                         <Text style={styles.text2 } multine>Vous êtes en "nv scolaire" Vous devez disposer
-                        des préreques suivantes pour qu'on puisse vous aidez à améliorer votre niveau :</Text>
+                            des préreques suivantes pour qu'on puisse vous aidez à améliorer votre niveau :</Text>
                         <Text style={styles.text3 }>{this.state.data.Prerequis1}  </Text>
                         <Text style={styles.text3 }>{this.state.data.Prerequis2} </Text>
                         <Text style={styles.text3 }>{this.state.data.Prerequis3} </Text>
@@ -48,14 +141,14 @@ export default class RecherchePr extends React.Component {
 
                 </View>
 
-                    <View style={styles.container1}>
-                        <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.props.navigation.navigate('RecherchePr')} >
-                            <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Confirmer</Text>
-                        </TouchableOpacity>
+                <View style={styles.container1}>
+                    <TouchableOpacity style={styles.ButtonStyle} activeOpacity = { .5 } onPress={() => this.showModal()} >
+                        <Text style={{fontWeight: 'bold',fontSize : 18,color: '#828788' }}>Confirmer</Text>
+                    </TouchableOpacity>
 
-                    </View>
+                </View>
 
-
+                <Text style={styles.dirannonce }>{this.state.error}</Text>
 
             </View>
         );
@@ -109,6 +202,25 @@ const styles = StyleSheet.create({
         paddingLeft : 15,
         paddingTop : 12,
         marginVertical:40,
+        alignItems : 'center',
+    },
+    modal: {
+        margin: 0,
+        backgroundColor: 'white',
+        height: 350,
+        flex:0 ,
+        bottom: 0,
+        borderTopRightRadius:20,
+        borderTopLeftRadius:20,
+        position: 'absolute',
+        width: '100%'
+    },
+    dirannonce : {
+        marginTop : '10%',
+        fontSize : 22,
+        color : '#AFA5A5',
+        fontWeight: 'bold',
+        textAlign : 'center',
         alignItems : 'center',
     },
 });
